@@ -71,6 +71,53 @@
                     })
 
                 });
+        
+    </script>
+    
+    <div id="map"></div>    
+    
+    <script>
+
+    var states;
+    var deats = {};
+    var locations = {};
+    
+    var parseRow = function (row) {
+	    row.EVENT_ID = Number(row.EVENT_ID);
+	    return row;
+    }
+    
+    d3.queue()
+    .defer(d3.json, "us.json")
+    .defer(d3.csv, "StormEvents_details_d2016_steamlined_first.csv", parseRow)
+    .defer(d3.csv, "StormEvents_locations-ftp_v1.0_d2016_c20170317.csv", parseRow)
+    .await(function (error, rawMap, rawDetails, rawLocations) {
+
+    	states = (topojson.feature(rawMap, rawMap.objects.states)).features;
+    	rawDetails.forEach(function(detail) {
+    		deats[detail.EVENT_ID] = detail;
+    	})
+
+    	rawLocations.forEach(function(location) {
+    		locations[location.EVENT_ID] = location;
+    	})
+
+    	createMap();
+        
+    });
+
+    var width = 800,
+        height = 800;
+
+    function createMap() {
+    	var projection = d3.geoMercator();
+    	var path = d3.geoPath().projection(projection);
+
+    	var svg = d3.select("map").append("svg")
+    	    .attr("width", width)
+    	    .attr("height", height);
+    }
+
     </script>
 
 </body>
