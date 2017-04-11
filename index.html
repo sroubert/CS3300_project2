@@ -31,6 +31,7 @@
     <script>
 
     var deats = {};
+    var locations = {};
 
     var parseRow = function (row) {
 	    row.EVENT_ID = Number(row.EVENT_ID);
@@ -39,15 +40,16 @@
     
     d3.queue()
     .defer(d3.csv, "StormEvents_details_d2016_steamlined_first.csv", parseRow)
-    .defer(d3.csv, "StormEvents_locations-ftp_v1.0_d2016_c20170317.csv")
+    .defer(d3.csv, "StormEvents_locations-ftp_v1.0_d2016_c20170317.csv", parseRow)
     .await(function (error, rawDetails, rawLocations) {
 
-    	rawDetails.forEach(function(event) {
-    		deats[event.EVENT_ID] = event;
+    	rawDetails.forEach(function(detail) {
+    		deats[detail.EVENT_ID] = detail;
     	})
 
-    	console.log(rawDetails);
-    	console.log(deats.length);
+    	rawLocations.forEach(function(location) {
+    		locations[location.EVENT_ID] = location;
+    	})
         
     });
     
