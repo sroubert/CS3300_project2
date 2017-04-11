@@ -71,16 +71,23 @@
         
     });
 
-    var width = 800,
-        height = 800;
+    var width = 960,
+        height = 500;
 
     function createMap() {
-    	var projection = d3.geoMercator();
+    	var projection = d3.geoAlbersUsa();
     	var path = d3.geoPath().projection(projection);
 
-    	var svg = d3.select("map").append("svg")
+    	var svg = d3.select("#map").append("svg")
     	    .attr("width", width)
     	    .attr("height", height);
+
+    	svg.append("g").attr("class", "states")
+    	    .selectAll("path")
+    	    .data(states).enter()
+    	    .append("path")
+    	    .style("fill", "steelblue")
+    	    .attr("d", path);
     }
 
     </script>
