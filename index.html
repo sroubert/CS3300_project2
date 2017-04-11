@@ -1,7 +1,7 @@
-
 <html>
 
-    <!-- sr949, dc652, kat86 Project 2 -->
+<!-- sr949, dc652, kat86 Project 2 -->
+
 <head>
 
     <style>
@@ -26,36 +26,53 @@
 </head>
 
 <body>
-    
-    
+
+
     <script>
+        ///asdjhsajdhajshdjkhsdjk
 
 
-    var deats = {};
-    var locations = {};
-        
+        var deats = {};
+        var locations = {};
 
-    var parseRow = function (row) {
-	    row.EVENT_ID = Number(row.EVENT_ID);
-	    return row;
-    }
-    
-    d3.queue()
-    .defer(d3.csv, "StormEvents_details_d2016_steamlined_first.csv", parseRow)
-    .defer(d3.csv, "StormEvents_locations-ftp_v1.0_d2016_c20170317.csv", parseRow)
-    .await(function (error, rawDetails, rawLocations) {
 
-    	rawDetails.forEach(function(detail) {
-    		deats[detail.EVENT_ID] = detail;
-    	})
 
-    	rawLocations.forEach(function(location) {
-    		locations[location.EVENT_ID] = location;
-    	})
-        
-    });
-    
+        var parseRow = function (row) {
+            row.EVENT_ID = Number(row.EVENT_ID);
+            return row;
+        }
+
+        function convertToMonetaryVals(string) {
+            if (string.includes("k") || string.includes("m")) {
+                    if (string.includes("k")) {
+                        string = string.replace("k", ""); console.log(string); return Number(string) * 1000;
+                    } else {
+                        string = string.replace("m", ""); return Number(string) * 1000000;
+                    }
+                } else {
+                    return string; 
+                }
+            }
+
+            d3.queue()
+                .defer(d3.csv, "StormEvents_details_d2016_steamlined_first.csv", parseRow)
+                .defer(d3.csv, "StormEvents_locations-ftp_v1.0_d2016_c20170317.csv", parseRow)
+                .await(function (error, rawDetails, rawLocations) {
+
+                    rawDetails.forEach(function (detail) {
+                        deats[detail.EVENT_ID] = detail;
+
+
+
+                    })
+
+                    rawLocations.forEach(function (location) {
+                        locations[location.EVENT_ID] = location;
+                    })
+
+                });
     </script>
-    
+
 </body>
+
 </html>
