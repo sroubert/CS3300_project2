@@ -19,6 +19,10 @@
         path {
             stroke: black
         }
+
+        i {
+        	color: gold;
+        }
     </style>
 
     <link href="https://fonts.googleapis.com/css?family=Alegreya|Alegreya+Sans" rel="stylesheet">
@@ -34,7 +38,8 @@
 
     <i class="wi wi-day-sunny"></i>
     
-    <div id="map"></div>    
+    <div id="map"></div> 
+    <svg id="test"><image src="icons/static/fire.png" /></svg> 
     
     <script>
 
@@ -95,6 +100,14 @@
     	    .append("path")
     	    .style("fill", "steelblue")
     	    .attr("d", path);
+
+    	var svgtest = d3.select("#test");
+    	svgtest.append("image").attr("xlink:href", "icons/animated/cloudy-day-2.svg")
+    	    .attr("x", "100")
+    	    .attr("y", "100");
+    	svgtest.append("image").attr("xlink:href", "icons/static/fire.png")
+    	    .attr("x", "50")
+    	    .attr("y", "50");
     }
 
     </script>
