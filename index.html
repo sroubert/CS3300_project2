@@ -78,9 +78,9 @@
 
     // Load data from json and csv files
     d3.queue()
-    .defer(d3.json, "us.json")
-    .defer(d3.csv, "StormEvents_details_d2016_steamlined_first.csv", parseRowDetails)
-    .defer(d3.csv, "StormEvents_locations-ftp_v1.0_d2016_c20170317.csv", parseRow)
+    .defer(d3.json, "json/us.json")
+    .defer(d3.csv, "csv/StormEvents_details_d2016_steamlined_first.csv", parseRowDetails)
+    .defer(d3.csv, "csv/StormEvents_locations-ftp_v1.0_d2016_c20170317.csv", parseRow)
 
     .await(function (error, rawMap, rawDetails, rawLocations) {
 
