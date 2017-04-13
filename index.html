@@ -11,25 +11,27 @@
     <!-- Weather icons from https://github.com/erikflowers/weather-icons -->
     <title>CS 3300 Project 2</title>
 
-    <style>
-        svg {
-            border: solid black 1px;
-        }
-        
-        path {
-            stroke: black
-        }
-
-        i {
-        	color: gold;
-        }
-    </style>
-
     <link href="https://fonts.googleapis.com/css?family=Alegreya|Alegreya+Sans" rel="stylesheet">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="http://d3js.org/topojson.v2.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+    <style>
+        svg {
+            border: solid black 1px;
+        }
+
+        i {
+        	color: gold;
+        }
+
+        .states {
+            fill: none;
+            stroke: #fff;
+            stroke-linejoin: round;
+        }  
+    </style>
 
 
 </head>
@@ -133,7 +135,7 @@
     	    .attr("d", path);
 
     	/*svg.append("path")
-            .datum(topojson.mesh(topo, topo.objects.states, function(a, b) { return a !== b; }))
+            .data(topojson.mesh(topo, states, function(a, b) { return a !== b; }))
             .attr("class", "mesh")
             .attr("d", path);*/
 
