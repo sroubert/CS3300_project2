@@ -46,13 +46,16 @@
     var states;
     var deats = {};
     var locations = {};
-    
+    var eventsNoCost = [];
+        
     var parseRowDetails = function (row) {
 	    row.EVENT_ID = Number(row.EVENT_ID);
         //row.DAMAGE_CROPS = convertToMonetaryVals(row.DAMAGE_CROPS);
 
         row.totalDamage = convertToMonetaryVals(row.DAMAGE_CROPS) +
                             convertToMonetaryVals(row.DAMAGE_PROPERTY);
+        if (row.totalDamage === 0) { eventsNoCost.push(row.EVENT_ID); return; }
+        
 	    return row;
     }
 
@@ -75,6 +78,8 @@
     }
     
     var details;
+        
+        
 
     // Load data from json and csv files
     d3.queue()
@@ -90,15 +95,22 @@
     		deats[detail.EVENT_ID] = detail;
     	})
 
+        
+        
     	rawLocations.forEach(function(location) {
     		locations[location.EVENT_ID] = location;
     	})
+        
+        //deleting events from location array that have zero cost associated with them
+        eventsNoCost.forEach(function(event){
+            if (locations.hasOwnProperty(event)) {
+                delete locations[event];
+            } 
+        })
 
     	createMap();
         details= deats;
         
-
-
 
     });
 
