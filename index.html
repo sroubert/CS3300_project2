@@ -1,8 +1,15 @@
+<!DOCTYPE html>
+
 <html>
 
 <!-- sr949, dc652, kat86 Project 2 -->
 
 <head>
+
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/weather-icons.min.css">
+    <!-- Weather icons from https://github.com/erikflowers/weather-icons -->
+    <title>CS 3300 Project 2</title>
 
     <style>
         svg {
@@ -12,9 +19,11 @@
         path {
             stroke: black
         }
-    </style>
 
-    <title>CS 3300 Project 2</title>
+        i {
+        	color: gold;
+        }
+    </style>
 
     <link href="https://fonts.googleapis.com/css?family=Alegreya|Alegreya+Sans" rel="stylesheet">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
@@ -26,8 +35,11 @@
 </head>
 
 <body>
+
+    <i class="wi wi-day-sunny"></i>
     
-    <div id="map"></div>    
+    <div id="map"></div> 
+    <svg id="test"><image src="icons/static/fire.png" /></svg> 
     
     <script>
 
@@ -69,6 +81,7 @@
     .defer(d3.json, "us.json")
     .defer(d3.csv, "StormEvents_details_d2016_steamlined_first.csv", parseRowDetails)
     .defer(d3.csv, "StormEvents_locations-ftp_v1.0_d2016_c20170317.csv", parseRow)
+
     .await(function (error, rawMap, rawDetails, rawLocations) {
 
     	states = (topojson.feature(rawMap, rawMap.objects.states)).features;
@@ -89,9 +102,9 @@
 
     });
 
+    // Create map of USA
     var width = 960,
         height = 500;
-
     function createMap() {
     	var projection = d3.geoAlbersUsa();
     	var path = d3.geoPath().projection(projection);
@@ -106,6 +119,14 @@
     	    .append("path")
     	    .style("fill", "steelblue")
     	    .attr("d", path);
+
+    	var svgtest = d3.select("#test");
+    	svgtest.append("image").attr("xlink:href", "icons/animated/cloudy-day-2.svg")
+    	    .attr("x", "100")
+    	    .attr("y", "100");
+    	svgtest.append("image").attr("xlink:href", "icons/static/fire.png")
+    	    .attr("x", "50")
+    	    .attr("y", "50");
     }
 
     </script>
