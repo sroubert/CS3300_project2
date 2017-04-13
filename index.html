@@ -35,31 +35,45 @@
     var deats = {};
     var locations = {};
     
-    var parseRow = function (row) {
+    var parseRowDetails = function (row) {
 	    row.EVENT_ID = Number(row.EVENT_ID);
+        //row.DAMAGE_CROPS = convertToMonetaryVals(row.DAMAGE_CROPS);
+
+        row.totalDamage = convertToMonetaryVals(row.DAMAGE_CROPS) +
+                            convertToMonetaryVals(row.DAMAGE_PROPERTY);
 	    return row;
+    }
+
+        var parseRow= function (row) {
+        row.EVENT_ID = Number(row.EVENT_ID);
+        //row.DAMAGE_CROPS = convertToMonetaryVals(row.DAMAGE_CROPS);
+
+        return row;
     }
 
     // Convert string money value into number
     function convertToMonetaryVals(string) {
-        if (string.includes("k")) {
-            string = string.replace("k", ""); return Number(string) * 1000;
-        } else if (string.includes("m")) {
-            string = string.replace("m", ""); return Number(string) * 1000000;
+        if (string.includes("K")) {
+            string = string.replace("K", ""); return Number(string) * 1000;
+        } else if (string.includes("M")) {
+            string = string.replace("M", ""); return Number(string) * 1000000;
         } else {
             return string; 
         }
     }
     
+    var details;
+
     // Load data from json and csv files
     d3.queue()
     .defer(d3.json, "us.json")
-    .defer(d3.csv, "StormEvents_details_d2016_steamlined_first.csv", parseRow)
+    .defer(d3.csv, "StormEvents_details_d2016_steamlined_first.csv", parseRowDetails)
     .defer(d3.csv, "StormEvents_locations-ftp_v1.0_d2016_c20170317.csv", parseRow)
     .await(function (error, rawMap, rawDetails, rawLocations) {
 
     	states = (topojson.feature(rawMap, rawMap.objects.states)).features;
-    	rawDetails.forEach(function(detail) {
+    	
+        rawDetails.forEach(function(detail) {
     		deats[detail.EVENT_ID] = detail;
     	})
 
@@ -68,7 +82,11 @@
     	})
 
     	createMap();
+        details= deats;
         
+
+
+
     });
 
     var width = 960,
