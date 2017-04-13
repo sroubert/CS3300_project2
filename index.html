@@ -129,16 +129,41 @@
     	    .selectAll("path")
     	    .data(states).enter()
     	    .append("path")
-    	    .style("fill", "steelblue")
+    	    .style("fill", "#77DD77")
     	    .attr("d", path);
 
+    	/*svg.append("path")
+            .datum(topojson.mesh(topo, topo.objects.states, function(a, b) { return a !== b; }))
+            .attr("class", "mesh")
+            .attr("d", path);*/
+
     	var svgtest = d3.select("#test");
-    	svgtest.append("image").attr("xlink:href", "icons/animated/cloudy-day-2.svg")
+    	svg.append("image").attr("xlink:href", "icons/animated/cloudy-day-2.svg")
     	    .attr("x", "100")
     	    .attr("y", "100");
-    	svgtest.append("image").attr("xlink:href", "icons/static/fire.png")
+    	svg.append("image").attr("xlink:href", "icons/static/flood.png")
     	    .attr("x", "50")
     	    .attr("y", "50");
+
+    	aa = [-122.490402, 37.786453];
+    	svg.selectAll("circle")
+		.data([aa]).enter()
+		.append("image").attr("xlink:href", "icons/static/flood.png")
+		.attr("x", function (d) { console.log(d); return projection(d)[0]; })
+		.attr("y", function (d) { return projection(d)[1]; });
+
+		svg.selectAll("circle")
+		.data([aa]).enter()
+		.append("circle")
+		.attr("cx", function (d) { console.log(d); return projection(d)[0]; })
+		.attr("cy", function (d) { return projection(d)[1]; })
+		.attr("r", "8px")
+		.attr("fill", "red");
+
+		svgtest.append("image").attr("xlink:href", "icons/static/flood.png")
+    	    .attr("x", "0")
+    	    .attr("y", "0");
+
     }
 
     </script>
