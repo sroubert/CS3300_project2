@@ -30,7 +30,12 @@
             fill: none;
             stroke: #fff;
             stroke-linejoin: round;
-        }  
+        }
+
+        #test {
+        	background-color: yellow;
+        }
+
     </style>
 
 
@@ -120,7 +125,7 @@
     var width = 960,
         height = 500;
     function createMap() {
-    	var projection = d3.geoAlbersUsa();
+    	var projection = d3.geoAlbersUsa().scale(1070).translate([width/2, height/2]);
     	var path = d3.geoPath().projection(projection);
 
     	var svg = d3.select("#map").append("svg")
@@ -134,11 +139,6 @@
     	    .style("fill", "#77DD77")
     	    .attr("d", path);
 
-    	/*svg.append("path")
-            .data(topojson.mesh(topo, states, function(a, b) { return a !== b; }))
-            .attr("class", "mesh")
-            .attr("d", path);*/
-
     	var svgtest = d3.select("#test");
     	svg.append("image").attr("xlink:href", "icons/animated/cloudy-day-2.svg")
     	    .attr("x", "100")
@@ -150,9 +150,10 @@
     	aa = [-122.490402, 37.786453];
     	svg.selectAll("circle")
 		.data([aa]).enter()
-		.append("image").attr("xlink:href", "icons/static/flood.png")
+		.append("image").attr("xlink:href", "icons/static/cold.png")
 		.attr("x", function (d) { console.log(d); return projection(d)[0]; })
-		.attr("y", function (d) { return projection(d)[1]; });
+		.attr("y", function (d) { return projection(d)[1]; })
+		.attr("class", "icon");
 
 		svg.selectAll("circle")
 		.data([aa]).enter()
@@ -163,6 +164,7 @@
 		.attr("fill", "red");
 
 		svgtest.append("image").attr("xlink:href", "icons/static/flood.png")
+    	    .attr("class", "icon")
     	    .attr("x", "0")
     	    .attr("y", "0");
 
