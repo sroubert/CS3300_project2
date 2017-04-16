@@ -54,25 +54,22 @@
     <div id="map"></div> 
     <svg id="test"><image src="icons/static/fire.png" /></svg> 
     
-    <input type="text" id="calendar">
-    <input type="text" id="calendar2">
- 
-    <script>
-    var myCalendar = new dhtmlXCalendarObject(["calendar","calendar2"]);
-    </script>
-
-    <form action="/action_page.php">
+    <!-- User input dates for slider -->
+    <br>
     Start Date:
-    <input type="date" name="bday">
-    <input type="submit">
-    </form>
-
-    <form action="/action_page.php">
+    <input type="date" id="startDate">
+    <br>
     End Date:
-    <input type="date" name="bday">
-    <input type="submit">
-    </form>
+    <input type="date" id="endDate">
+    <br>
+    <button type="button" onclick = "extractDates()" >Visualize Weather Patterns</button>
+
     <script>
+    function extractDates () {
+    var currentStartDate = document.getElementById('startDate').value;
+    var currentEndDateVal = document.getElementById('endDate').value;
+    console.log(currentStartDate);
+    }
 
     var states;
     var deats = {};
