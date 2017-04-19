@@ -11,7 +11,7 @@
     <!-- Weather icons from https://github.com/erikflowers/weather-icons -->
     <title>CS 3300 Project 2</title>
 
-    <link type="text/css" rel="stylesheet" href="https://fast.fonts.net/cssapi/c1ece602-4b8f-4767-a71f-aa828be38869.css"/>
+    <link type="text/css" rel="stylesheet" href="https://fast.fonts.net/cssapi/c1ece602-4b8f-4767-a71f-aa828be38869.css" />
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
@@ -21,117 +21,119 @@
 
     <style>
         body {
-        	font-family: "LinotypeUniversW01-Cn";
-        	padding: 10px 0;
-        	background-color: #f8f8f8;
+            font-family: "LinotypeUniversW01-Cn";
+            padding: 10px 0;
+            background-color: #f8f8f8;
         }
-
+        
         h1 {
-        	font-family: "LinotypeUniversW01-Cn";
-        	text-transform: uppercase;
-        	font-weight: 600;
-        	font-size: 35pt;
-        	padding: 0;
-        	margin: 0;
-        	padding-top: 10px;
-        	line-height: 1.2em;
-        	text-align: center;
+            font-family: "LinotypeUniversW01-Cn";
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 35pt;
+            padding: 0;
+            margin: 0;
+            padding-top: 10px;
+            line-height: 1.2em;
+            text-align: center;
         }
-
+        
         h2 {
-        	text-align: left;
-        	padding-top: 10px;
+            text-align: left;
+            padding-top: 10px;
         }
-
+        
         h3 {
-        	font-family: "LinotypeUniversW01-Cn";
-        	text-transform: uppercase;
-        	font-weight: 500;
-        	font-size: 25pt;
+            font-family: "LinotypeUniversW01-Cn";
+            text-transform: uppercase;
+            font-weight: 500;
+            font-size: 25pt;
         }
-
+        
         p {
-        	font-size: 15pt;
+            font-size: 15pt;
         }
-
+        
         #instruct {
-        	text-align: left;
-        	padding-left: 10px;
-        	padding-bottom: 0;
+            text-align: left;
+            padding-left: 10px;
+            padding-bottom: 0;
         }
-
+        
         div.circle {
-        	width: 40px;
-        	height: 40px;
-        	border: solid #585858 2px;
-        	border-radius: 30px;
-        	color: #585858;
-        	text-align: center;
-        	font-size: 32px;
-        	margin: 23px 20px 0 0;
-        	float: left;
-        	font-weight: bold;
+            width: 40px;
+            height: 40px;
+            border: solid #585858 2px;
+            border-radius: 30px;
+            color: #585858;
+            text-align: center;
+            font-size: 32px;
+            margin: 23px 20px 0 0;
+            float: left;
+            font-weight: bold;
         }
-
-		div.circleText {
-			padding-top: 3px;
-		}
-
+        
+        div.circleText {
+            padding-top: 3px;
+        }
+        
         #label {
-        	padding-left: 25px;
+            padding-left: 25px;
         }
-
+        
         .container {
             width: 1000px;
             display: flex;
             padding-left: 50px;
-            padding-bottom: 10px; 
+            padding-bottom: 10px;
         }
+        
         .left {
             width: 300px;
             height: auto;
             float: left;
         }
+        
         .right {
             width: 700px;
             float: left;
             height: auto;
             padding-top: 35px;
         }
-
+        
         svg {
             border: solid black 1px;
         }
-
+        
         .svgs {
-        	width: 1000px;
+            width: 1000px;
             display: flex;
             padding-left: 30px;
             padding-bottom: 10px;
         }
+        
         #map {
-        	width: 800px;
+            width: 800px;
             height: auto;
             float: left;
         }
+        
         #map-details {
-        	width: 300px;
+            width: 300px;
             float: left;
             height: auto;
         }
-
-
+        
         .states {
             fill: none;
             stroke: #fff;
             stroke-linejoin: round;
         }
-
+        
         .svg-map {
-        	/*background-color: #42647F;*/
-        	padding-top: 10px;
+            /*background-color: #42647F;*/
+            padding-top: 10px;
         }
-
     </style>
 
 
@@ -146,41 +148,45 @@
 
     <!-- Instructions -->
     <div style="padding: 0 25px" id="instruct">
-    <h3>Instructions</h3>
-    <p style="margin-top: -20px">To see weather events on a single day, enter date here.</p>
-    <p style="margin-top: -15px">To see a visualization of weather events between a range of dates, enter start and end dates here.</p>
+        <h3>Instructions</h3>
+        <p style="margin-top: -20px">To see weather events on a single day, enter date here.</p>
+        <p style="margin-top: -15px">To see a visualization of weather events between a range of dates, enter start and end dates here.</p>
     </div>
 
     <!-- Button sections -->
     <div class="container">
-    <div class="left">
-    <div class="circle"><div class="circleText">1</div></div>
-    <h2>See Weather On</h2>
-    </div>
-    <div class="right">
-    <input type="date" id="date">
-    <button type="button" onclick = "extractDates()" >Visualize Weather Patterns</button>
-    </div>
+        <div class="left">
+            <div class="circle">
+                <div class="circleText">1</div>
+            </div>
+            <h2>See Weather On</h2>
+        </div>
+        <div class="right">
+            <input type="date" id="date">
+            <button type="button" onclick="extractDates()">Visualize Weather Patterns</button>
+        </div>
     </div>
 
     <div class="container">
-    <div class="left">
-    <div class="circle"><div class="circleText">2</div></div>
-    <h2>Fast Forward Through</h2></div>
-    <div class="right">
-    <span id="label">
+        <div class="left">
+            <div class="circle">
+                <div class="circleText">2</div>
+            </div>
+            <h2>Fast Forward Through</h2></div>
+        <div class="right">
+            <span id="label">
     Start Date:</span>
-    <input type="date" id="startDate"><span id="label">
+            <input type="date" id="startDate"><span id="label">
     End Date:</span>
-    <input type="date" id="endDate">
-    <button type="button" onclick = "extractDates()" >Visualize Weather Patterns</button>
+            <input type="date" id="endDate">
+            <button type="button" onclick="extractDates()">Visualize Weather Patterns</button>
+        </div>
     </div>
-    </div>
-    
+
 
     <div class="svgs">
-    <div id="map"></div>
-    <div id="map-details"></div>
+        <div id="map"></div>
+        <div id="map-details"></div>
     </div>
 
     <h4 style="font-weight: bold; text-align: center; font-size: 20pt">Top Places You Can Die From A Weather Event</h4>
@@ -192,11 +198,20 @@
 
         var episodeCosts = [];
         var episodeIDs = [];
-        
+
         var states;
         var deats = {};
         var locations = {};
         var eventsNoCost = [];
+
+        var floodEvents = ["Coastal Flood", "Flash Flood", "Flood", "High Surf", "Tsunami"];
+        var hotEvents = ["Wildfire", "Drought", "Dust Storm", "Excessive Heat", "Heat"];
+        var snowEvents = ["Winter Storm", "Winter Weather", "Sleet", "Ice Storm", "Heavy Snow",
+                        "Hail", "Frost/Freeze", "Extreme Cold/Wind Chill", "Cold/Wind Chill",
+                        "Blizzard", "Avalanche"];
+        var windEvents = ["High Wind", "Thunderstorm Wind", "Tornado"];
+        var hurricanes = ["Hurricane", "Typhoon", "Hurricane (Typhoon)", "Tropical Storm"];
+
 
         var parseRowDetails = function (row) {
             row.EVENT_ID = Number(row.EVENT_ID);
@@ -208,6 +223,23 @@
                 eventsNoCost.push(row.EVENT_ID);
                 return;
             }
+
+            //creating icon row
+            if (floodEvents.includes(row.EVENT_TYPE)) {
+                row.icon = "icons/static/water.png";
+            } else if (hotEvents.includes(row.EVENT_TYPE)) {
+                row.icon = "icons/static/fire.png";
+            } else if (snowEvents.includes(row.EVENT_TYPE)) {
+                row.icon = "icons/static/snow.png";
+            } else if (windEvents.includes(row.EVENT_TYPE)) {
+                row.icon = "icons/static/wind.png";
+            } else if (hurricanes.includes(row.EVEMT_TYPE)) {
+                row.icon = "icons/static/hurricane.png";
+            } else {
+                row.icon = "icons/animated/night.svg";
+            }
+
+
 
             return row;
         }
@@ -267,34 +299,35 @@
 
             createMap();
             details = deats;
-            
-            d3.values(deats).forEach( function (event) {
-                if (!eventTypes.includes(event.EVENT_TYPE))  {
-                    eventTypes.push(event.EVENT_TYPE);
+
+            d3.values(deats).forEach(function (event) {
+                    if (!eventTypes.includes(event.EVENT_TYPE)) {
+                        eventTypes.push(event.EVENT_TYPE);
+                    }
                 }
-            }
-                
-                          
+
+
             );
 
             console.log(eventTypes);
         });
-        
-        d3.values(locations).forEach( function (event){
+
+        d3.values(locations).forEach(function (event) {
             if (!episodeIDs.includes(event.EPISODE_ID)) {
                 episodeIDs.push(event.EPISODE_ID);
-                
+
             }
-            
+
             episodeCosts[episodeIDs.indexOf(event.EPISODE_ID)] = episodeCosts[episodeIDs.indexOf(event.EPISODE_ID)] + deats(event.EVENT_ID).totalDamage;
-            
+
         });
-        
+
         // Create map of USA
         var width = 780,
             height = 450;
+
         function createMap() {
-            var projection = d3.geoAlbersUsa().scale(940).translate([width/2, height/2]);
+            var projection = d3.geoAlbersUsa().scale(940).translate([width / 2, height / 2]);
             var path = d3.geoPath().projection(projection);
 
             var svg = d3.select("#map").append("svg")
@@ -313,31 +346,34 @@
                 .attr("x", "100")
                 .attr("y", "100");
 
-            svg.selectAll("circle")
+            svg.selectAll("image")
                 .data(d3.values(locations).filter(function (event) {
 
-                    return ( (projection([event.LATITUDE, event.LONGITUDE].reverse())) != null)   && deats[event.EVENT_ID].BEGIN_DAY === "8" ;
+                    return ((projection([event.LATITUDE, event.LONGITUDE].reverse())) != null) && deats[event.EVENT_ID].BEGIN_DAY === "8";
 
                 })).enter()
-                .append("circle")
-                .attr("cx", function (event) {
-                    
-                    console.log(event.EVENT_ID)
-                
-                
+                .append("image")
+                .attr("x", function (event) {
+
+                    // console.log(event.EVENT_ID)
+
+
                     return projection([event.LATITUDE, event.LONGITUDE].reverse())[0];
                 })
-                .attr("cy", function (event) {
+                .attr("y", function (event) {
                     return projection([event.LATITUDE, event.LONGITUDE].reverse())[1];
                 })
-                .attr("r", "8px")
-                .attr("fill", "red")};
+                .attr("xlink:href", function (event) {
+
+                    console.log(deats[event.EVENT_ID].icon);
+                    return deats[event.EVENT_ID].icon;
+                })
+        };
 
 
-            var dsvg = d3.select("#map-details").append("svg")
-                .attr("width", width*0.65)
-                .attr("height", height)
-
+        var dsvg = d3.select("#map-details").append("svg")
+            .attr("width", width * 0.65)
+            .attr("height", height)
     </script>
 
 </body>
