@@ -134,7 +134,7 @@
             stroke-linejoin: round;
         }
         
-        .svg-map {
+        #svg-map {
             /*background-color: #42647F;*/
             padding-top: 10px;
         }
@@ -189,7 +189,7 @@
     </div>
 
     <div style="margin-left: -25px; margin-top: -20px" class="svgs">
-        <div id="map"></div>
+        <div id="map"><svg id="svg-map"></svg></div>
         <div id="map-details"></div>
     </div>
 
@@ -197,9 +197,13 @@
 
     <script>
         function visualizeSingleDate() {
-            var userViewDate = new Date(document.getElementById('date').value).clearTime();
+            var rawDate= document.getElementById('date').value;
+            var userViewDate = new Date(rawDate.replace("-", "/"));
+
+            //var userViewDate = new Date(document.getElementById('date').value);
+
             console.log(userViewDate);
-            var svg = d3.select("#map");
+            var svg = d3.select("#svg-map");
             svg.selectAll("image")
                 //going through location, note has to be array
                 .data(d3.values(locations).filter(function (event) {
@@ -207,11 +211,7 @@
                     var beginDay = new Date(details[event.EVENT_ID].BEGIN_DATE_TIME).clearTime();
 
                     var endDay = new Date(details[event.EVENT_ID].END_DATE_TIME).clearTime();
-
-
-                    //
-
-                     console.log(userViewDate.between(beginDay, endDay));
+                    console.log(userViewDate.between(beginDay, endDay));
                     //only filters if returns true
                     return userViewDate.between(beginDay, endDay);
 
@@ -394,10 +394,9 @@
             //var projection = d3.geoAlbersUsa().scale(1080).translate([width / 2, height / 2]);
             //var path = d3.geoPath().projection(projection);
 
-            var svg = d3.select("#map").append("svg")
+            var svg = d3.select("#svg-map")
                 .attr("width", width)
-                .attr("height", height)
-                .attr("class", "svg-map");
+                .attr("height", height);
 
             svg.append("g").attr("class", "states")
                 .selectAll("path")
@@ -422,6 +421,7 @@
 
                     //
                     var userDate = new Date("12/25/2016");
+
 
 
                     //only filters if returns true
