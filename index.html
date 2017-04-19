@@ -22,7 +22,6 @@
     <style>
         body {
         	font-family: "LinotypeUniversW01-Cn";
-        	text-align: center;
         	padding: 10px 0;
         	background-color: #f8f8f8;
         }
@@ -36,6 +35,7 @@
         	margin: 0;
         	padding-top: 10px;
         	line-height: 1.2em;
+        	text-align: center;
         }
 
         h2 {
@@ -48,6 +48,10 @@
         	text-transform: uppercase;
         	font-weight: 500;
         	font-size: 25pt;
+        }
+
+        p {
+        	font-size: 15pt;
         }
 
         #instruct {
@@ -98,6 +102,24 @@
             border: solid black 1px;
         }
 
+        .svgs {
+        	width: 1000px;
+            display: flex;
+            padding-left: 30px;
+            padding-bottom: 10px;
+        }
+        #map {
+        	width: 800px;
+            height: auto;
+            float: left;
+        }
+        #map-details {
+        	width: 300px;
+            float: left;
+            height: auto;
+        }
+
+
         .states {
             fill: none;
             stroke: #fff;
@@ -117,12 +139,15 @@
 <body>
     <h1>Severe Weather Episodes in the US</h1>
 
-    <p>Word. words. wor.ds words. Word. words. wor.ds words. Word. words. wor.ds words.Word. words. wor.ds words.vvv Word. words. wor.ds words. Word. words. wor.ds words. Word. words. wor.ds words. Word. words. wor.ds words. Word. words. wor.ds words. Word. words. wor.ds words. Word. words. wor.ds words. Word. words. wor.ds words. Word. words. wor.ds words. Word. words. wor.ds words. Word. words. wor.ds words.Word. words. wor.ds words. Word. words. wor.ds words. Word. words. wor.ds words. Word. words. wor.ds words. Word. words. wor.ds words. Word. words. wor.ds words.</p>
+    <p style="padding: 0 25px">As of April 6 in 2017, there have been 5 recorded severe weather disaster events that each caused over 1 billion dollars in losses. The disasters resulted in the deaths of 37 people and caused significant economic destruction on the areas of impact.</p>
+    <p style="padding: 0 25px">Between 1980 and 2016, there was an annual average of 5.5 events. Between 2012 and 2016, the annual average was 10.6 events.</p>
+    <p style="padding: 0 25px">Use the following map to visualize the occurrence of weather events across the US between 1999 and 2016.</p>
 
     <!-- Instructions -->
-    <div id="instruct">
+    <div style="padding: 0 25px" id="instruct">
     <h3>Instructions</h3>
-    <p>sdfkjshfkjsd hkjfhsdkj hfksdj hkfdsjh kdfsjhkjs hfkjdsh kjfhsdk sfd</p>
+    <p>To see weather events on a single day, enter date here.
+    To see a visualization of weather events between a range of dates, enter start and end dates here.</p>
     </div>
 
     <!-- Button sections -->
@@ -265,10 +290,10 @@
         });
         
         // Create map of USA
-        var width = 790,
+        var width = 780,
             height = 450;
         function createMap() {
-            var projection = d3.geoAlbersUsa().scale(930).translate([width/2, height/2]);
+            var projection = d3.geoAlbersUsa().scale(940).translate([width/2, height/2]);
             var path = d3.geoPath().projection(projection);
 
             var svg = d3.select("#map").append("svg")
@@ -309,7 +334,7 @@
 
 
             var dsvg = d3.select("#map-details").append("svg")
-                .attr("width", width*0.6)
+                .attr("width", width*0.65)
                 .attr("height", height)
 
     </script>
