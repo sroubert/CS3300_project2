@@ -40,7 +40,7 @@
 
         h2 {
         	text-align: left;
-        	padding-top: 30px;
+        	padding-top: 10px;
         }
 
         h3 {
@@ -72,8 +72,26 @@
 			padding-top: 3px;
 		}
 
-		#bottom {
-			padding-top: 0;
+        #label {
+        	padding-left: 25px;
+        }
+
+        .container {
+            width: 1000px;
+            display: flex;
+            padding-left: 30px;
+            padding-bottom: 10px; 
+        }
+        .left {
+            width: 300px;
+            height: auto;
+            float: left;
+        }
+        .right {
+            width: 700px;
+            float: left;
+            height: auto;
+            padding-top: 35px;
         }
 
         svg {
@@ -87,7 +105,8 @@
         }
 
         .svg-map {
-        	background-color: #42647F;
+        	/*background-color: #42647F;*/
+        	padding-top: 10px;
         }
 
     </style>
@@ -107,27 +126,38 @@
     </div>
 
     <!-- Button sections -->
-    <div id="top" style="margin-top: 45px;">
+    <div class="container">
+    <div class="left">
     <div class="circle"><div class="circleText">1</div></div>
     <h2>See Weather On</h2>
-    Start Date:
-    <input type="date" id="startDate" value = "2016-01-01">
-    End Date:
-    <input type="date" id="endDate" value = "2016-12-31">
-    <br>
+    </div>
+    <div class="right">
+    <span id="label">
+    Date</span>
+    <input type="date" id="date">
     <button type="button" onclick = "extractDates()" >Visualize Weather Patterns</button>
     </div>
+    </div>
 
-    <div id="bottom" style="margin-top: 45px;">
+    <div class="container">
+    <div class="left">
     <div class="circle"><div class="circleText">2</div></div>
-    <h2>Fast Forward Through</h2>
+    <h2>Fast Forward Through</h2></div>
+    <div class="right">
+    <span id="label">
+    Start Date:</span>
+    <input type="date" id="startDate"><span id="label">
+    End Date:</span>
+    <input type="date" id="endDate">
+    <button type="button" onclick = "extractDates()" >Visualize Weather Patterns</button>
+    </div>
     </div>
     
-    <!-- User input dates for slider -->
-    
 
-
-    <div id="map"></div> 
+    <div class="svgs">
+    <div id="map"></div>
+    <div id="map-details"></div>
+    </div>
     <script>
         function extractDates() {
             var currentStartDate = document.getElementById('startDate').value;
@@ -235,10 +265,10 @@
         });
         
         // Create map of USA
-        var width = 860,
-            height = 480;
+        var width = 790,
+            height = 450;
         function createMap() {
-            var projection = d3.geoAlbersUsa().scale(970).translate([width/2, height/2]);
+            var projection = d3.geoAlbersUsa().scale(930).translate([width/2, height/2]);
             var path = d3.geoPath().projection(projection);
 
             var svg = d3.select("#map").append("svg")
@@ -276,6 +306,11 @@
                 })
                 .attr("r", "8px")
                 .attr("fill", "red")};
+
+
+            var dsvg = d3.select("#map-details").append("svg")
+                .attr("width", width*0.6)
+                .attr("height", height)
 
     </script>
 
