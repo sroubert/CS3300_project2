@@ -168,7 +168,7 @@
         </div>
         <div class="right">
             <input type="date" id="date">
-            <button type="button" onclick="extractDates()">Visualize Weather Patterns</button>
+            <button type="button" onclick="visualizeSingleDate()">Visualize Weather Patterns</button>
         </div>
     </div>
 
@@ -184,7 +184,7 @@
             <input type="date" id="startDate"><span id="label">
     End Date:</span>
             <input type="date" id="endDate">
-            <button type="button" onclick="extractDates()">Visualize Weather Patterns</button>
+            <button type="button" onclick="visualizeFastForward()">Visualize Weather Patterns</button>
         </div>
     </div>
 
@@ -196,8 +196,46 @@
     <h4 style="font-weight: bold; text-align: center; font-size: 20pt">Top Places You Can Die From A Weather Event</h4>
 
     <script>
-        function extractDates() {
-            var currentDate = document.getElementById('date').value;
+        function visualizeSingleDate() {
+            var userViewDate = new Date(document.getElementById('date').value).clearTime();
+            console.log(userViewDate);
+            var svg = d3.select("#map");
+            svg.selectAll("image")
+                //going through location, note has to be array
+                .data(d3.values(locations).filter(function (event) {
+
+                    var beginDay = new Date(details[event.EVENT_ID].BEGIN_DATE_TIME).clearTime();
+
+                    var endDay = new Date(details[event.EVENT_ID].END_DATE_TIME).clearTime();
+
+
+                    //
+
+                     console.log(userViewDate.between(beginDay, endDay));
+                    //only filters if returns true
+                    return userViewDate.between(beginDay, endDay);
+
+                    //how you would refer to fatatilies
+                    //fatal(event.EVENT_ID)...
+
+                })).enter()
+                .append("image")
+                .attr("x", function (event) {
+
+                    return projection([event.LATITUDE, event.LONGITUDE].reverse())[0] - 17;
+                })
+                .attr("y", function (event) {
+                    return projection([event.LATITUDE, event.LONGITUDE].reverse())[1] - 17;
+                })
+                .attr("xlink:href", function (event) {
+
+                    console.log(details[event.EVENT_ID].icon);
+                    return details[event.EVENT_ID].icon;
+                })
+
+        }
+                
+        function visualizeFastForward() {
             var currentStartDate = document.getElementById('startDate').value;
             var currentEndDateVal = document.getElementById('endDate').value;
         }
@@ -349,10 +387,12 @@
         // Create map of USA
         var width = 800,
             height = 540;
+        var projection = d3.geoAlbersUsa().scale(1080).translate([width / 2, height / 2]);
+        var path = d3.geoPath().projection(projection);
 
         function createMap() {
-            var projection = d3.geoAlbersUsa().scale(1080).translate([width / 2, height / 2]);
-            var path = d3.geoPath().projection(projection);
+            //var projection = d3.geoAlbersUsa().scale(1080).translate([width / 2, height / 2]);
+            //var path = d3.geoPath().projection(projection);
 
             var svg = d3.select("#map").append("svg")
                 .attr("width", width)
@@ -376,7 +416,6 @@
                 .data(d3.values(locations).filter(function (event) {
 
                     var beginDay = new Date(deats[event.EVENT_ID].BEGIN_DATE_TIME).clearTime();
-                    console.log(beginDay);
 
                     var endDay = new Date(deats[event.EVENT_ID].END_DATE_TIME).clearTime();
 
@@ -384,7 +423,6 @@
                     //
                     var userDate = new Date("12/25/2016");
 
-                    console.log(userDate.between(beginDay, endDay));
 
                     //only filters if returns true
                     return userDate.between(beginDay, endDay);
