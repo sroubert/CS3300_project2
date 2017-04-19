@@ -235,13 +235,13 @@
             } else if (hotEvents.includes(row.EVENT_TYPE)) {
                 row.icon = "icons/static/fire.png";
             } else if (snowEvents.includes(row.EVENT_TYPE)) {
-                row.icon = "icons/static/snow.png";
+                row.icon = "icons/animated/snowy-6.svg";
             } else if (windEvents.includes(row.EVENT_TYPE)) {
                 row.icon = "icons/static/wind.png";
             } else if (hurricanes.includes(row.EVEMT_TYPE)) {
                 row.icon = "icons/static/hurricane.png";
             } else {
-                row.icon = "icons/animated/night.svg";
+                row.icon = "icons/animated/weather.svg";
             }
 
 
@@ -343,10 +343,6 @@
                 .append("path")
                 .style("fill", "#77DD77")
                 .attr("d", path);
-
-            svg.append("image").attr("xlink:href", "icons/animated/cloudy-day-2.svg")
-                .attr("x", "100")
-                .attr("y", "100");
 
             svg.selectAll("image")
                 .data(d3.values(locations).filter(function (event) {
