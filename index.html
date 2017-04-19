@@ -152,6 +152,10 @@
             float: left;
             height: auto;
         }
+
+        image {
+        	border: solid red 1px;
+        }
         
         .states {
             fill: none;
@@ -162,6 +166,11 @@
         #svg-map {
             /*background-color: #42647F;*/
             padding-top: 10px;
+        }
+
+        #legend {
+        	text-align: center;
+        	margin-top: -10px;
         }
     </style>
 
@@ -217,6 +226,8 @@
         <div id="map"><svg id="svg-map"></svg></div>
         <div id="map-details"></div>
     </div>
+
+    <div id="legend"></div>
 
     <h4 style="font-weight: bold; text-align: center; font-size: 20pt">Top Places You Can Die From A Weather Event</h4>
 
@@ -283,6 +294,13 @@
         var windEvents = ["High Wind", "Thunderstorm Wind", "Tornado"];
         var hurricanes = ["Hurricane", "Typhoon", "Hurricane (Typhoon)", "Tropical Storm"];
 
+        var water_icon = "icons/static/water.png",
+            fire_icon = "icons/static/fire.png",
+            snow_icon = "icons/animated/snowy-6.svg",
+            wind_icon = "icons/static/wind.png",
+            hurricane_icon = "icons/static/hurricane.png",
+            weather_icon = "icons/animated/weather.svg";
+
 
         var parseRowDetails = function (row) {
             row.EVENT_ID = Number(row.EVENT_ID);
@@ -297,17 +315,17 @@
 
             //creating icon row
             if (floodEvents.includes(row.EVENT_TYPE)) {
-                row.icon = "icons/static/water.png";
+                row.icon = water_icon;
             } else if (hotEvents.includes(row.EVENT_TYPE)) {
-                row.icon = "icons/static/fire.png";
+                row.icon = fire_icon;
             } else if (snowEvents.includes(row.EVENT_TYPE)) {
-                row.icon = "icons/animated/snowy-6.svg";
+                row.icon = snow_icon;
             } else if (windEvents.includes(row.EVENT_TYPE)) {
-                row.icon = "icons/static/wind.png";
+                row.icon = wind_icon;
             } else if (hurricanes.includes(row.EVEMT_TYPE)) {
-                row.icon = "icons/static/hurricane.png";
+                row.icon = hurricane_icon;
             } else {
-                row.icon = "icons/animated/weather.svg";
+                row.icon = weather_icon;
             }
 
 
@@ -416,6 +434,8 @@
             height = 540;
         var projection = d3.geoAlbersUsa().scale(1080).translate([width / 2, height / 2]);
         var path = d3.geoPath().projection(projection);
+        var lwidth = 800,
+            lheight = 150;
 
         function createMap() {
             //var projection = d3.geoAlbersUsa().scale(1080).translate([width / 2, height / 2]);
@@ -437,7 +457,7 @@
 
             ////////////////////////////////////////
             //make sure this goes to function that is called upon user input
-            svg.selectAll("image")
+            /*svg.selectAll("image")
                 //going through location, note has to be array
                 .data(d3.values(locations).filter(function (event) {
 
@@ -469,14 +489,30 @@
                 .attr("xlink:href", function (event) {
 
                     return deats[event.EVENT_ID].icon;
-                })
+                })*/
 
         };
 
 
         var dsvg = d3.select("#map-details").append("svg")
             .attr("width", width * 0.65)
-            .attr("height", height)
+            .attr("height", height);
+
+        var lsvg = d3.select("#legend").append("svg")
+            .attr("width", lwidth)
+            .attr("height", lheight);
+
+        var icon_lst = [water_icon, fire_icon, snow_icon, wind_icon, hurricane_icon, weather_icon];
+        for (var i = 0; i < 6; i++) {
+        	lsvg.append("image")
+        	    .attr("x", (i*100)+100)
+        	    .attr("y", lheight/4)
+        	    .attr("xlink:href", icon_lst[i])
+        	    .attr("class", "i");
+
+        	console.log("$icon_lst[i]");
+        }
+
     </script>
 
 </body>
