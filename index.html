@@ -204,6 +204,8 @@
 
             console.log(userViewDate);
             var svg = d3.select("#svg-map");
+            svg.selectAll("image").remove();
+
             svg.selectAll("image")
                 //going through location, note has to be array
                 .data(d3.values(locations).filter(function (event) {
