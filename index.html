@@ -366,21 +366,31 @@
                 .style("fill", "#77DD77")
                 .attr("d", path);
 
+
+            //!!!!!!!!!!!!!! icons to map!!!!!!!!!!!//
+
+            ////////////////////////////////////////
+            //make sure this goes to function that is called upon user input
             svg.selectAll("image")
+                //going through location, note has to be array
                 .data(d3.values(locations).filter(function (event) {
 
-                    /*                    return ((projection([event.LATITUDE, event.LONGITUDE].reverse())) != null) && deats[event.EVENT_ID].BEGIN_DAY === "8" && deats[event.EVENT_ID].BEGIN_YEARMONTH === "201608"*/
                     var beginDay = new Date(deats[event.EVENT_ID].BEGIN_DATE_TIME).clearTime();
                     console.log(beginDay);
 
                     var endDay = new Date(deats[event.EVENT_ID].END_DATE_TIME).clearTime();
 
+
+                    //
                     var userDate = new Date("12/25/2016");
 
                     console.log(userDate.between(beginDay, endDay));
+
+                    //only filters if returns true
                     return userDate.between(beginDay, endDay);
 
-
+                    //how you would refer to fatatilies
+                    //fatal(event.EVENT_ID)...
 
                 })).enter()
                 .append("image")
