@@ -24,7 +24,7 @@
         body {
             font-family: "LinotypeUniversW01-Cn";
             padding: 10px 0;
-            background-color: #f8f8f8;
+            background-color: #eeeeee;
         }
         
         h1 {
@@ -155,7 +155,7 @@
     </div>
 
     <!-- Button sections -->
-    <div style="margin-top: -15px" class="container">
+    <div style="margin-top: -10px" class="container">
         <div class="left">
             <div class="circle">
                 <div class="circleText">1</div>
@@ -168,7 +168,7 @@
         </div>
     </div>
 
-    <div class="container">
+    <div style="margin-top: -20px" class="container">
         <div class="left">
             <div class="circle">
                 <div class="circleText">2</div>
@@ -185,7 +185,7 @@
     </div>
 
 
-    <div class="svgs">
+    <div style="margin-left: -25px" class="svgs">
         <div id="map"></div>
         <div id="map-details"></div>
     </div>
@@ -324,11 +324,11 @@
         });
 
         // Create map of USA
-        var width = 780,
-            height = 450;
+        var width = 800,
+            height = 520;
 
         function createMap() {
-            var projection = d3.geoAlbersUsa().scale(940).translate([width / 2, height / 2]);
+            var projection = d3.geoAlbersUsa().scale(1080).translate([width/2, height/2]);
             var path = d3.geoPath().projection(projection);
 
             var svg = d3.select("#map").append("svg")
