@@ -7,12 +7,10 @@
 <head>
 
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="css/weather-icons.min.css">
     <!-- Weather icons from https://github.com/erikflowers/weather-icons -->
     <title>CS 3300 Project 2</title>
 
     <link type="text/css" rel="stylesheet" href="https://fast.fonts.net/cssapi/c1ece602-4b8f-4767-a71f-aa828be38869.css" />
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
     <script src="https://d3js.org/d3.v4.min.js"></script>
@@ -53,6 +51,11 @@
         
         p {
             font-size: 15pt;
+        }
+        
+        #highlight {
+            color: #667f39;
+            font-weight: 600;
         }
         
         #instruct {
@@ -141,17 +144,18 @@
 </head>
 
 <body>
-    <h1>Severe Weather Episodes in the US</h1>
+    <h1>Severe Weather Episodes in the U.S.</h1>
 
-    <p style="padding: 0 25px">As of April 6 in 2017, there have been 5 recorded severe weather disaster events that each caused over 1 billion dollars in losses. The disasters resulted in the deaths of 37 people and caused significant economic destruction on the areas of impact.</p>
-    <p style="padding: 0 25px; margin-top: -17px">Between 1980 and 2016, there was an annual average of 5.5 events. Between 2012 and 2016, the annual average was 10.6 events.</p>
+    <p style="padding: 0 25px">As of April 6 in 2017, there have been <span id="highlight">5 recorded severe weather disaster events </span> that each caused <span id="highlight">over 1 billion dollars in losses</span>. The disasters resulted in the <span id="highlight">deaths of 37 people</span> and caused significant economic destruction on the areas of impact.</p>
+    <p style="padding: 0 25px; margin-top: -17px">Between 1980 and 2016, there was <span id="highlight">an annual average of 5.5 events</span>. Between 2012 and 2016, the <span id="highlight">annual average was 10.6 events</span>.</p>
     <p style="padding: 0 25px; margin-top: -5px">Use the following map to visualize the occurrence of weather events across the US between 1999 and 2016.</p>
 
     <!-- Instructions -->
-    <div style="padding: 0 25px" id="instruct">
+
+    <div style="padding: 0 25px; padding-top: 10px" id="instruct">
         <h3>Instructions</h3>
         <p style="margin-top: -20px">To see weather events on a single day, enter a valid date below to visualize weather pattens. <span style="font-weight: bold">See Weather On </span>any date of your choosing. </p>
-        <p style="margin-top: -17px">Witness the influence of weather across the country and <span style="font-weight: bold">Fast Forward Through </span>time via the weather. Visualize the change of weather episodes between various ranges of dates by entering valid start and end dates below.</p>
+        <p style="margin-top: -17px">Witness the influence of weather across the country and <span style="font-weight: bold">Fast Forward Through </span>time utilizing the impact of the forecast. Capture the change of weather episodes between various ranges of dates by entering valid start and end dates below.</p>
     </div>
 
     <!-- Button sections -->
@@ -184,15 +188,16 @@
         </div>
     </div>
 
-
-    <div style="margin-left: -25px" class="svgs">
+    <div style="margin-left: -25px; margin-top: -20px" class="svgs">
         <div id="map"></div>
         <div id="map-details"></div>
     </div>
 
     <h4 style="font-weight: bold; text-align: center; font-size: 20pt">Top Places You Can Die From A Weather Event</h4>
+
     <script>
         function extractDates() {
+            var currentDate = document.getElementById('date').value;
             var currentStartDate = document.getElementById('startDate').value;
             var currentEndDateVal = document.getElementById('endDate').value;
         }
@@ -231,13 +236,13 @@
             } else if (hotEvents.includes(row.EVENT_TYPE)) {
                 row.icon = "icons/static/fire.png";
             } else if (snowEvents.includes(row.EVENT_TYPE)) {
-                row.icon = "icons/static/snow.png";
+                row.icon = "icons/animated/snowy-6.svg";
             } else if (windEvents.includes(row.EVENT_TYPE)) {
                 row.icon = "icons/static/wind.png";
             } else if (hurricanes.includes(row.EVEMT_TYPE)) {
                 row.icon = "icons/static/hurricane.png";
             } else {
-                row.icon = "icons/animated/night.svg";
+                row.icon = "icons/animated/weather.svg";
             }
 
 
@@ -329,8 +334,6 @@
 
 
             );
-
-            console.log(eventTypes);
         });
 
         d3.values(locations).forEach(function (event) {
@@ -345,7 +348,7 @@
 
         // Create map of USA
         var width = 800,
-            height = 520;
+            height = 540;
 
         function createMap() {
             var projection = d3.geoAlbersUsa().scale(1080).translate([width / 2, height / 2]);
@@ -362,10 +365,6 @@
                 .append("path")
                 .style("fill", "#77DD77")
                 .attr("d", path);
-
-            svg.append("image").attr("xlink:href", "icons/animated/cloudy-day-2.svg")
-                .attr("x", "100")
-                .attr("y", "100");
 
             svg.selectAll("image")
                 .data(d3.values(locations).filter(function (event) {
@@ -387,9 +386,6 @@
                 .append("image")
                 .attr("x", function (event) {
 
-                    // console.log(event.EVENT_ID)
-
-
                     return projection([event.LATITUDE, event.LONGITUDE].reverse())[0] - 17;
                 })
                 .attr("y", function (event) {
@@ -397,9 +393,9 @@
                 })
                 .attr("xlink:href", function (event) {
 
-                    console.log(deats[event.EVENT_ID].icon);
                     return deats[event.EVENT_ID].icon;
                 })
+
         };
 
 
