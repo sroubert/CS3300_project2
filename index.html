@@ -149,9 +149,9 @@
 
     <!-- Instructions -->
     <div style="padding: 0 25px" id="instruct">
-    <h3>Instructions</h3>
-    <p style="margin-top: -20px">To see weather events on a single day, enter a valid date below to visualize weather pattens. <span style="font-weight: bold">See Weather On </span>any date of your choosing. </p>
-    <p style="margin-top: -17px">Witness the influence of weather across the country and <span style="font-weight: bold">Fast Forward Through </span>time via the weather. Visualize the change of weather episodes between various ranges of dates by entering valid start and end dates below.</p>
+        <h3>Instructions</h3>
+        <p style="margin-top: -20px">To see weather events on a single day, enter a valid date below to visualize weather pattens. <span style="font-weight: bold">See Weather On </span>any date of your choosing. </p>
+        <p style="margin-top: -17px">Witness the influence of weather across the country and <span style="font-weight: bold">Fast Forward Through </span>time via the weather. Visualize the change of weather episodes between various ranges of dates by entering valid start and end dates below.</p>
     </div>
 
     <!-- Button sections -->
@@ -241,6 +241,23 @@
             }
 
 
+            /*            var daysOfEvent = [];
+
+                        var beginDate = new Date(row.BEGIN_DATE_TIME).clearTime();
+                        var endDate = new Date(row.END_DATE_TIME).clearTime();
+
+                        var sameDate = -1;
+
+
+                        while (sameDate == -1) {
+                            daysOfEvent.push(beginDate);
+                            if (!beginDate.compare(endDate)) {
+                                sameDate = 0;
+                            }
+                            beginDate.add(1);
+                        }
+
+                        row.days = daysOfEvent;*/
 
             return row;
         }
@@ -269,6 +286,7 @@
 
         var details;
         var eventTypes = [];
+        var rawDeats = {};
 
 
         // Load data from json and csv files
@@ -279,6 +297,8 @@
 
         .await(function (error, rawMap, rawDetails, rawLocations) {
 
+            rawDeats = rawDetails;
+            console.log("got here");
             states = (topojson.feature(rawMap, rawMap.objects.states)).features;
 
             rawDetails.forEach(function (detail) {
@@ -328,7 +348,7 @@
             height = 520;
 
         function createMap() {
-            var projection = d3.geoAlbersUsa().scale(1080).translate([width/2, height/2]);
+            var projection = d3.geoAlbersUsa().scale(1080).translate([width / 2, height / 2]);
             var path = d3.geoPath().projection(projection);
 
             var svg = d3.select("#map").append("svg")
@@ -350,7 +370,18 @@
             svg.selectAll("image")
                 .data(d3.values(locations).filter(function (event) {
 
-                    return ((projection([event.LATITUDE, event.LONGITUDE].reverse())) != null) && deats[event.EVENT_ID].BEGIN_DAY === "8" && deats[event.EVENT_ID].BEGIN_YEARMONTH === "201608";
+                    /*                    return ((projection([event.LATITUDE, event.LONGITUDE].reverse())) != null) && deats[event.EVENT_ID].BEGIN_DAY === "8" && deats[event.EVENT_ID].BEGIN_YEARMONTH === "201608"*/
+                    var beginDay = new Date(deats[event.EVENT_ID].BEGIN_DATE_TIME).clearTime();
+                    console.log(beginDay);
+
+                    var endDay = new Date(deats[event.EVENT_ID].END_DATE_TIME).clearTime();
+
+                    var userDate = new Date("12/25/2016");
+
+                    console.log(userDate.between(beginDay, endDay));
+                    return userDate.between(beginDay, endDay);
+
+
 
                 })).enter()
                 .append("image")
