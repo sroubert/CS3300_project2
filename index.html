@@ -80,13 +80,37 @@
         div.circleText {
             padding-top: 3px;
         }
+
+        input {
+        	padding: 3px;
+        	font-size: 12pt;
+        }
+
+        button {
+        	border: solid #585858 1px;
+        	color: #585858;
+        	background-color: white;
+        	text-align: center;
+        	font-family: "LinotypeUniversW01-Cn";
+        	font-weight: 600;
+        	font-size: 15pt;
+        	padding: 5px;
+        	margin-left: 30px;
+        	padding-left: 15px;
+        	padding-right: 15px;
+        }
+
+        button:hover {
+        	background-color: #848484;
+        	color: white;
+        }
         
         #label {
-            padding-left: 25px;
+            padding-left: 30px;
         }
         
         .container {
-            width: 1000px;
+            width: 1300px;
             display: flex;
             padding-left: 50px;
             padding-bottom: 10px;
@@ -99,10 +123,11 @@
         }
         
         .right {
-            width: 700px;
+            width: 900px;
             float: left;
             height: auto;
-            padding-top: 35px;
+            padding-top: 25px;
+            font-size: 15pt;
         }
         
         svg {
@@ -168,7 +193,7 @@
         </div>
         <div class="right">
             <input type="date" id="date">
-            <button type="button" onclick="visualizeSingleDate()">Visualize Weather Patterns</button>
+            <button type="button" onclick="visualizeSingleDate()">Visualize</button>
         </div>
     </div>
 
@@ -184,7 +209,7 @@
             <input type="date" id="startDate"><span id="label">
     End Date:</span>
             <input type="date" id="endDate">
-            <button type="button" onclick="visualizeFastForward()">Visualize Weather Patterns</button>
+            <button type="button" onclick="visualizeFastForward()">Visualize</button>
         </div>
     </div>
 
