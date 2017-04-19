@@ -349,7 +349,7 @@
             svg.selectAll("image")
                 .data(d3.values(locations).filter(function (event) {
 
-                    return ((projection([event.LATITUDE, event.LONGITUDE].reverse())) != null) && deats[event.EVENT_ID].BEGIN_DAY === "8";
+                    return ((projection([event.LATITUDE, event.LONGITUDE].reverse())) != null) && deats[event.EVENT_ID].BEGIN_DAY === "8" && deats[event.EVENT_ID].BEGIN_YEARMONTH === "201608";
 
                 })).enter()
                 .append("image")
@@ -358,10 +358,10 @@
                     // console.log(event.EVENT_ID)
 
 
-                    return projection([event.LATITUDE, event.LONGITUDE].reverse())[0];
+                    return projection([event.LATITUDE, event.LONGITUDE].reverse())[0] - 17;
                 })
                 .attr("y", function (event) {
-                    return projection([event.LATITUDE, event.LONGITUDE].reverse())[1];
+                    return projection([event.LATITUDE, event.LONGITUDE].reverse())[1] - 17;
                 })
                 .attr("xlink:href", function (event) {
 
