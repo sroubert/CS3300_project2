@@ -7,7 +7,6 @@
 <head>
 
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="css/weather-icons.min.css">
     <!-- Weather icons from https://github.com/erikflowers/weather-icons -->
     <title>CS 3300 Project 2</title>
 
@@ -53,6 +52,11 @@
         
         p {
             font-size: 15pt;
+        }
+
+        #highlight {
+        	color: #667f39;
+        	font-weight: 600;
         }
         
         #instruct {
@@ -143,12 +147,12 @@
 <body>
     <h1>Severe Weather Episodes in the US</h1>
 
-    <p style="padding: 0 25px">As of April 6 in 2017, there have been 5 recorded severe weather disaster events that each caused over 1 billion dollars in losses. The disasters resulted in the deaths of 37 people and caused significant economic destruction on the areas of impact.</p>
-    <p style="padding: 0 25px; margin-top: -17px">Between 1980 and 2016, there was an annual average of 5.5 events. Between 2012 and 2016, the annual average was 10.6 events.</p>
+    <p style="padding: 0 25px">As of April 6 in 2017, there have been <span id="highlight">5 recorded severe weather disaster events </span> that each caused <span id="highlight">over 1 billion dollars in losses</span>. The disasters resulted in the <span id="highlight">deaths of 37 people</span> and caused significant economic destruction on the areas of impact.</p>
+    <p style="padding: 0 25px; margin-top: -17px">Between 1980 and 2016, there was <span id="highlight">an annual average of 5.5 events</span>. Between 2012 and 2016, the <span id="highlight">annual average was 10.6 events</span>.</p>
     <p style="padding: 0 25px; margin-top: -5px">Use the following map to visualize the occurrence of weather events across the US between 1999 and 2016.</p>
 
     <!-- Instructions -->
-    <div style="padding: 0 25px" id="instruct">
+    <div style="padding: 0 25px; padding-top: 10px" id="instruct">
     <h3>Instructions</h3>
     <p style="margin-top: -20px">To see weather events on a single day, enter a valid date below to visualize weather pattens. <span style="font-weight: bold">See Weather On </span>any date of your choosing. </p>
     <p style="margin-top: -17px">Witness the influence of weather across the country and <span style="font-weight: bold">Fast Forward Through </span>time via the weather. Visualize the change of weather episodes between various ranges of dates by entering valid start and end dates below.</p>
@@ -325,7 +329,7 @@
 
         // Create map of USA
         var width = 800,
-            height = 520;
+            height = 510;
 
         function createMap() {
             var projection = d3.geoAlbersUsa().scale(1080).translate([width/2, height/2]);
@@ -355,9 +359,6 @@
                 })).enter()
                 .append("image")
                 .attr("x", function (event) {
-
-                    // console.log(event.EVENT_ID)
-
 
                     return projection([event.LATITUDE, event.LONGITUDE].reverse())[0] - 17;
                 })
