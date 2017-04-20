@@ -287,6 +287,8 @@
         var locations = {};
         var eventsNoCost = [];
         var state_deats = [];
+        var state_locs = [];
+        var sd_deats = [];
         var dam = [];
         var fates = [];
 
@@ -347,18 +349,23 @@
         d3.queue()
             .defer(d3.json, "json/us.json")
             .defer(d3.csv, "csv/ProcessedCSV/2016Condensed.csv", parseRowDetails)
+            .defer(d3.csv, "csv/StormEvents_details_d2016_steamlined_first.csv", parseRowDetails)
             .defer(d3.csv, "csv/StormEvents_locations-ftp_v1.0_d2016_c20170317.csv", parseRow)
             .defer(d3.csv, "csv/2016MajorDamageOnly.csv", parseRowDetails)
             .defer(d3.csv, "csv/Fatalities/2016Fatalities.csv", parseRowDetails)
 
-        .await(function (error, rawMap, rawDetails, rawLocations, rawDamage, rawFatality) {
+        .await(function (error, rawMap, rawDetails, conDetails, rawLocations, rawDamage, rawFatality) {
 
             rawDeats = rawDetails;
             states = (topojson.feature(rawMap, rawMap.objects.states)).features;
 
             rawDetails.forEach(function (detail) {
                 deats[detail.EVENT_ID] = detail;
-                state_deats.push(detail);
+                sd_deats.push(detail);
+            })
+
+            conDetails.forEach(function (cdetail) {
+                state_deats.push(cdetail);
             })
 
             rawDamage.forEach(function (damage) {
@@ -374,7 +381,6 @@
                     locations[location.EVENT_ID] = location;
                 }
 
-                
             })
 
             //deleting events from location array that have zero cost associated with them
@@ -382,6 +388,7 @@
                 if (locations.hasOwnProperty(event)) {
                     delete locations[event];
                 }
+                state_locs.push(event);
             })
 
             createMap();
@@ -423,6 +430,7 @@
                 .data(states).enter()
                 .append("path")
                 .style("fill", "#77DD77")
+                .style("fill-opacity", 0.8)
                 .attr("d", path)
                 .on("click", function (d) { // Details when state is clicked
                     dsvg.selectAll(".change").remove();
@@ -450,9 +458,6 @@
                                 other++;
                             }
 
-                            // Calculate total cost of damage
-                            damage += Number(event.TotalDamage);
-
                             // Calculate total number of fatalities
                             var ff = fates.filter(function (fate) {
                                 return fate.EVENT_ID == event.EVENT_ID;
@@ -461,12 +466,19 @@
                         }
 
                     });
+                    sd_deats.forEach(function (event) {
+                        if (event.STATE_FIPS == d.id) {
+                            // Calculate total cost of damage
+                            damage += Number(event.TotalDamage);
+                        }
+                    });
+
                     console.log(state_name);
                     console.log(damage);
                     console.log(fatal);
                     console.log(fates.length);
 
-                    max = Math.max(flood, heat, snow, cold, wind, hc, other);
+                    /*max = Math.max(flood, heat, snow, cold, wind, hc, other);
                     if (max == flood) {
                         wmax = "Flooding";
                     } else if (max == heat) {
@@ -481,7 +493,7 @@
                         wmax = "hurricane";
                     } else {
                         wmax = "Other";
-                    }
+                    }*/
 
                     var wvalues = [{"icon": "", "value": flood}, {"icon": " ", "value": heat}, {"icon": "  ", "value": snow}, {"icon": "   ", "value": cold}, {"icon": "    ", "value": wind}, {"icon": "     ", "value": hc}, {"icon": "      ", "value": other}];
 
@@ -534,7 +546,13 @@
                         .style("font-size", "18pt")
                         .style("font-weight", "bold")
                         .attr("class", "change");
-
+                })
+                .on('mouseover', function (d) {
+                    var currentState = this;
+                    d3.select(this).style('fill-opacity', 1);
+                })
+                .on('mouseout', function (d) {
+                    d3.selectAll('path').style('fill-opacity', 0.8);
                 });
 
         };
