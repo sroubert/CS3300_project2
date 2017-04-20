@@ -337,14 +337,20 @@
             return row;
         }
 
-        var parseRowState = function (row) {
+        var parseRowStateGDP = function (row) {
             row.GDP = Number(row.GDP);
+            return row;
+        }
+
+        var parseRowPop = function (row) {
+            row.Population = Number(row.Population);
             return row;
         }
 
         var details;
         var rawDeats = {};
         var stateDeats;
+        var statePop;
 
 
         // Load data from json and csv files
@@ -355,11 +361,31 @@
             .defer(d3.csv, "csv/StormEvents_locations-ftp_v1.0_d2016_c20170317.csv", parseRow)
             .defer(d3.csv, "csv/2016MajorDamageOnly.csv", parseRowDetails)
             .defer(d3.csv, "csv/Fatalities/2016Fatalities.csv", parseRowDetails)
-            .defer(d3.csv, "csv/state2015GDP.csv", parseRowState)
+            .defer(d3.csv, "csv/state2015GDP.csv", parseRowStateGDP)
+            .defer(d3.csv, "csv/2015populationData.csv", parseRowPop)
 
         .await(function (error, rawMap, conDetails, rawDetails, rawLocations, rawDamage, rawFatality, rawStateGDP) {
 
             stateDeats = rawStateGDP;
+
+            /*            rawStatePop.forEach(function(state) {
+                            var 
+                        })
+                        */
+
+
+            statePop = rawStatePop;
+
+            stateDeats.forEach(function (state) {
+                var index;
+
+                index = rawStatePop.findIndex(x => x.STATE_NAME = state.State);
+
+                state["Population"] = rawStatePop[index].Population;
+
+
+            })
+
             rawDeats = rawDetails;
             states = (topojson.feature(rawMap, rawMap.objects.states)).features;
 
