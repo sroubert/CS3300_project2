@@ -379,9 +379,17 @@
             stateDeats.forEach(function (state) {
                 var index;
 
-                index = rawStatePop.findIndex(x => x.STATE_NAME = state.State);
+                index = rawStatePop.indexOf(state["State"]);
 
-                state["Population"] = rawStatePop[index].Population;
+                /*rawStatePop.findIndex(function (statePop) {
+
+
+                        return (statePop["NAME"] == state["STATE"]);
+                    }
+
+                );*/
+                console.log(index);
+                //state["Population"] = rawStatePop[index].Population;
 
 
             })
