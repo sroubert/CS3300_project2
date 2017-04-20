@@ -234,8 +234,6 @@
         <div id="map-details"></div>
     </div>
 
-    <!--<h4 style="font-weight: bold; text-align: center; font-size: 20pt">Top Places You Can Die From A Weather Event</h4>-->
-
     <script>
         function visualizeSingleDate() {
             var rawDate= document.getElementById('date').value;
@@ -255,9 +253,6 @@
 
                     //only filters if returns true
                     return userViewDate.between(beginDay, endDay);
-
-                    //how you would refer to fatatilies
-                    //fatal(event.EVENT_ID)...
 
                 })).enter()
                 .append("image")
@@ -394,7 +389,6 @@
             createMap();
             details = deats;
 
-
         });
 
         d3.values(locations).forEach(function (event) {
@@ -474,9 +468,7 @@
                     });
 
                     console.log(state_name);
-                    console.log(damage);
                     console.log(fatal);
-                    console.log(fates.length);
 
                     /*max = Math.max(flood, heat, snow, cold, wind, hc, other);
                     if (max == flood) {
@@ -521,6 +513,7 @@
                         .attr("y", function(d) { return y(d.value)+70; })
                         .attr("width", x.bandwidth())
                         .attr("height", function(d) { return 150-y(d.value); });
+                    // X-axis icon labels
                     for (var i = 1; i < 8; i++) {
                         dsvg.append("image")
                             .attr("xlink:href", icon_lst[i-1])
@@ -547,7 +540,7 @@
                         .style("font-weight", "bold")
                         .attr("class", "change");
                 })
-                .on('mouseover', function (d) {
+                .on('mouseover', function (d) { // Map hover effect
                     var currentState = this;
                     d3.select(this).style('fill-opacity', 1);
                 })
