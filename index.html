@@ -281,7 +281,6 @@
         var states;
         var deats = {};
         var locations = {};
-        var eventsNoCost = [];
         var state_deats = [];
         var state_locs = [];
         var sd_deats = [];
@@ -350,8 +349,8 @@
         var details;
         var rawDeats = {};
         var stateDeats;
-        var statePop;
-
+        var statePop = [];
+        var gdpNum = [];
 
         // Load data from json and csv files
         d3.queue()
@@ -368,31 +367,31 @@
 
             stateDeats = rawStateGDP;
 
-            /*            rawStatePop.forEach(function(state) {
-                            var 
-                        })
-                        */
-
-
-            statePop = rawStatePop;
 
             stateDeats.forEach(function (state) {
                 var index;
 
-                index = rawStatePop.indexOf(state["State"]);
+                index = rawStatePop.findIndex(function (d) {
+                    return d.NAME == state["State"];
+                })
 
-                /*rawStatePop.findIndex(function (statePop) {
 
+                state["Population"] = rawStatePop[index].Population;
+                state["Damage"] = 0;
+                state["Fatalities"] = 0;
 
-                        return (statePop["NAME"] == state["STATE"]);
-                    }
-
-                );*/
-                console.log(index);
-                //state["Population"] = rawStatePop[index].Population;
-
+                statePop.push(state["Population"]);
+                gdpNum.push(state["GDP"]);
 
             })
+
+            function sortNumber(a, b) {
+                return a - b;
+            }
+
+            statePop.sort(sortNumber);
+
+            gdpNum.sort(sortNumber);
 
             rawDeats = rawDetails;
             states = (topojson.feature(rawMap, rawMap.objects.states)).features;
@@ -422,13 +421,31 @@
 
             })
 
-            //deleting events from location array that have zero cost associated with them
-            eventsNoCost.forEach(function (event) {
-                if (locations.hasOwnProperty(event)) {
-                    delete locations[event];
-                }
-                state_locs.push(event);
-            })
+
+            stateDeats.forEach(function (stateInfo) {
+
+                state_deats.forEach(function (event) {
+
+                    if (event.STATE == stateInfo.State) {
+
+                        var ff = fates.filter(function (fate) {
+                            return fate.EVENT_ID == event.EVENT_ID;
+                        });
+                        stateInfo.Fatalities += ff.length;
+                    }
+
+                });
+
+                sd_deats.forEach(function (event) {
+                    if (event.STATE == stateInfo.State) {
+                        stateInfo.Damage += Number(event.TotalDamage);
+                    }
+                });
+
+
+            });
+
+
 
             createMap();
             details = deats;
@@ -524,22 +541,6 @@
                     console.log(fatal);
                     console.log(damage);
 
-                    /*max = Math.max(flood, heat, snow, cold, wind, hc, other);
-                    if (max == flood) {
-                        wmax = "Flooding";
-                    } else if (max == heat) {
-                        wmax = "Heat-based/dry weather";
-                    } else if (max == snow) {
-                        wmax = "Snow";
-                    } else if (max == cold) {
-                        wmax = "CHill";
-                    } else if (max == wind) {
-                        wmax = "wind";
-                    } else if (max == hc) {
-                        wmax = "hurricane";
-                    } else {
-                        wmax = "Other";
-                    }*/
 
                     var wvalues = [{
                         "icon": "",
