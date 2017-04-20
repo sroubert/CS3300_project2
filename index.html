@@ -362,7 +362,7 @@
             .defer(d3.csv, "csv/2016MajorDamageOnly.csv", parseRowDetails)
             .defer(d3.csv, "csv/Fatalities/2016Fatalities.csv", parseRowDetails)
             .defer(d3.csv, "csv/state2015GDP.csv", parseRowStateGDP)
-            .defer(d3.csv, "csv/2015populationData.csv", parseRowPop)
+            .defer(d3.csv, "csv/statePopulationData.csv", parseRowPop)
 
         .await(function (error, rawMap, conDetails, rawDetails, rawLocations, rawDamage, rawFatality, rawStateGDP, rawStatePop) {
 
