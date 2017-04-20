@@ -7,7 +7,7 @@
 <head>
 
     <meta charset="utf-8">
-    <!-- Weather icons from https://github.com/erikflowers/weather-icons -->
+    <!-- Weather icons from http://www.freepik.com and https://www.amcharts.com/free-animated-svg-weather-icons/ -->
     <title>CS 3300 Project 2</title>
 
     <link type="text/css" rel="stylesheet" href="https://fast.fonts.net/cssapi/c1ece602-4b8f-4767-a71f-aa828be38869.css" />
@@ -221,13 +221,13 @@
             <button type="button" onclick="visualizeFastForward()">Visualize</button>
         </div>
     </div>
+    
+    <div id="legend"></div>
 
     <div style="margin-left: -25px; margin-top: -20px" class="svgs">
         <div id="map"><svg id="svg-map"></svg></div>
         <div id="map-details"></div>
     </div>
-
-    <div id="legend"></div>
 
     <h4 style="font-weight: bold; text-align: center; font-size: 20pt">Top Places You Can Die From A Weather Event</h4>
 
@@ -236,9 +236,6 @@
             var rawDate= document.getElementById('date').value;
             var userViewDate = new Date(rawDate.replace("-", "/"));
 
-            //var userViewDate = new Date(document.getElementById('date').value);
-
-            console.log(userViewDate);
             var svg = d3.select("#svg-map");
             svg.selectAll("image").remove();
 
@@ -249,7 +246,7 @@
                     var beginDay = new Date(details[event.EVENT_ID].BEGIN_DATE_TIME).clearTime();
 
                     var endDay = new Date(details[event.EVENT_ID].END_DATE_TIME).clearTime();
-                    console.log(userViewDate.between(beginDay, endDay));
+
                     //only filters if returns true
                     return userViewDate.between(beginDay, endDay);
 
@@ -266,8 +263,6 @@
                     return projection([event.LATITUDE, event.LONGITUDE].reverse())[1] - 17;
                 })
                 .attr("xlink:href", function (event) {
-
-                    console.log(details[event.EVENT_ID].icon);
                     return details[event.EVENT_ID].icon;
                 })
 
@@ -288,18 +283,18 @@
 
         var floodEvents = ["Coastal Flood", "Flash Flood", "Flood", "High Surf", "Tsunami"];
         var hotEvents = ["Wildfire", "Drought", "Dust Storm", "Excessive Heat", "Heat"];
-        var snowEvents = ["Winter Storm", "Winter Weather", "Sleet", "Ice Storm", "Heavy Snow",
-                        "Hail", "Frost/Freeze", "Extreme Cold/Wind Chill", "Cold/Wind Chill",
-                        "Blizzard", "Avalanche"];
+        var snowEvents = ["Winter Storm", "Winter Weather", "Sleet", "Ice Storm", "Heavy Snow", "Blizzard", "Avalanche"];
+        var coldEvents = [ "Hail", "Frost/Freeze", "Extreme Cold/Wind Chill", "Cold/Wind Chill"];
         var windEvents = ["High Wind", "Thunderstorm Wind", "Tornado"];
         var hurricanes = ["Hurricane", "Typhoon", "Hurricane (Typhoon)", "Tropical Storm"];
 
-        var water_icon = "icons/static/water.png",
-            fire_icon = "icons/static/fire.png",
+        var water_icon = "icons/static/flood.png",
+            fire_icon = "icons/static/heat.png",
             snow_icon = "icons/animated/snowy-6.svg",
-            wind_icon = "icons/static/wind.png",
-            hurricane_icon = "icons/static/hurricane.png",
-            weather_icon = "icons/animated/weather.svg";
+            wind_icon = "icons/static/windy.png",
+            hurricane_icon = "icons/static/hurr.png",
+            weather_icon = "icons/animated/weather.svg",
+            cold_icon = "icons/static/cold.png";
 
 
         var parseRowDetails = function (row) {
@@ -320,6 +315,8 @@
                 row.icon = fire_icon;
             } else if (snowEvents.includes(row.EVENT_TYPE)) {
                 row.icon = snow_icon;
+            } else if (coldEvents.includes(row.EVENT_TYPE)) {
+            	row.icon = cold_icon;
             } else if (windEvents.includes(row.EVENT_TYPE)) {
                 row.icon = wind_icon;
             } else if (hurricanes.includes(row.EVEMT_TYPE)) {
@@ -386,7 +383,6 @@
         .await(function (error, rawMap, rawDetails, rawLocations) {
 
             rawDeats = rawDetails;
-            console.log("got here");
             states = (topojson.feature(rawMap, rawMap.objects.states)).features;
 
             rawDetails.forEach(function (detail) {
@@ -502,15 +498,20 @@
             .attr("width", lwidth)
             .attr("height", lheight);
 
-        var icon_lst = [water_icon, fire_icon, snow_icon, wind_icon, hurricane_icon, weather_icon];
-        for (var i = 0; i < 6; i++) {
+        var icon_lst = [water_icon, fire_icon, snow_icon, cold_icon, wind_icon, hurricane_icon, weather_icon];
+        for (var i = 0; i < 7; i++) {
         	lsvg.append("image")
-        	    .attr("x", (i*100)+100)
-        	    .attr("y", lheight/4)
+        	    .attr("x", (i*110)+30)
+        	    .attr("y", 0)
         	    .attr("xlink:href", icon_lst[i])
         	    .attr("class", "i");
 
-        	console.log("$icon_lst[i]");
+        	if (icon_lst[i] == water_icon) {
+        		lsvg.append("text")
+        		    .attr("x", (i*120)+50).attr("y", 100)
+        		    .text("Flooding type events")
+        		    .attr("")
+        	}
         }
 
     </script>
