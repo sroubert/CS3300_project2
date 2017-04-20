@@ -1,0 +1,678 @@
+FATALITY_ID,EVENT_ID,FATALITY_TYPE,FATALITY_DATE,FATALITY_AGE,FATALITY_SEX,FATALITY_LOCATION
+5907,200978,D,1/2/10 0:00,28,M,Outside/Open Areas
+5949,201328,D,1/9/10 0:00,58,M,Outside/Open Areas
+6231,201898,I,1/7/10 0:00,75,F,Vehicle/Towed Trailer
+5957,202718,I,1/7/10 0:00,41,F,Outside/Open Areas
+5958,202773,I,1/8/10 0:00,58,F,Outside/Open Areas
+6281,203220,D,1/25/10 0:00,86,M,Outside/Open Areas
+6391,203360,I,1/26/10 0:00,85,M,Outside/Open Areas
+6326,203409,I,1/9/10 0:00,49,M,Mobile/Trailer Home
+6002,203520,I,1/20/10 0:00,,,Permanent Home
+6341,204129,I,1/23/10 0:00,31,M,Outside/Open Areas
+6081,204606,D,1/12/10 0:00,85,F,Permanent Home
+6082,204607,D,1/21/10 0:00,61,F,Outside/Open Areas
+6107,205181,D,2/4/10 0:00,55,M,Vehicle/Towed Trailer
+6108,205222,D,2/6/10 0:00,50,M,Outside/Open Areas
+6122,205518,D,1/24/10 0:00,65,M,In Water
+6501,205568,D,2/10/10 0:00,51,M,Outside/Open Areas
+6296,205842,I,2/3/10 0:00,39,M,Vehicle/Towed Trailer
+6148,205975,D,2/11/10 0:00,45,M,In Water
+6140,206027,I,1/27/10 0:00,88,F,Outside/Open Areas
+6139,206035,I,2/4/10 0:00,45,F,Vehicle/Towed Trailer
+6387,206843,I,1/7/10 0:00,43,M,Vehicle/Towed Trailer
+6186,208054,D,2/21/10 0:00,30,M,Outside/Open Areas
+6195,208235,I,2/15/10 0:00,45,M,Outside/Open Areas
+6194,208252,I,2/15/10 0:00,35,F,Vehicle/Towed Trailer
+6320,208256,I,2/14/10 0:00,20,F,Vehicle/Towed Trailer
+6321,208256,I,2/15/10 0:00,57,M,Vehicle/Towed Trailer
+6202,208476,I,1/20/10 0:00,51,M,Vehicle/Towed Trailer
+6228,209481,I,1/18/10 0:00,46,M,Vehicle/Towed Trailer
+6359,209683,I,1/7/10 0:00,19,M,Vehicle/Towed Trailer
+6360,209689,I,1/7/10 0:00,75,M,Vehicle/Towed Trailer
+6278,209886,D,2/17/10 0:00,54,M,In Water
+6322,210174,I,1/8/10 0:00,99,F,Permanent Home
+6324,210192,D,1/8/10 0:00,71,M,Outside/Open Areas
+6283,210848,D,1/22/10 0:00,54,M,Outside/Open Areas
+6336,210909,D,1/24/10 0:00,42,M,Outside/Open Areas
+6337,210910,D,1/27/10 0:00,51,M,Outside/Open Areas
+6338,210915,D,1/29/10 0:00,48,M,Outside/Open Areas
+6290,211011,D,1/28/10 0:00,92,F,Outside/Open Areas
+6331,211032,I,1/18/10 0:00,70,F,Vehicle/Towed Trailer
+6332,211032,I,1/18/10 0:00,75,F,Vehicle/Towed Trailer
+6333,211032,I,1/18/10 0:00,68,F,Vehicle/Towed Trailer
+6481,211038,D,3/10/10 0:00,79,M,Permanent Home
+6307,211096,I,1/29/10 0:00,,,Vehicle/Towed Trailer
+6297,211235,D,1/19/10 0:00,,F,Mobile/Trailer Home
+6378,211312,I,3/14/10 0:00,60,M,Vehicle/Towed Trailer
+6342,211316,I,1/28/10 0:00,31,M,Vehicle/Towed Trailer
+6298,211467,I,2/8/10 0:00,,M,Outside/Open Areas
+6299,211471,D,1/3/10 0:00,51,M,Outside/Open Areas
+6300,211471,D,1/4/10 0:00,55,M,Outside/Open Areas
+6301,211471,D,1/4/10 0:00,68,M,Permanent Home
+6303,211472,D,1/7/10 0:00,76,M,Camping
+6306,211473,D,1/10/10 0:00,54,F,Permanent Home
+6316,211542,I,1/20/10 0:00,38,F,Vehicle/Towed Trailer
+6317,211648,I,2/22/10 0:00,20,M,Vehicle/Towed Trailer
+6357,211712,I,1/7/10 0:00,40,M,Vehicle/Towed Trailer
+6469,211810,I,1/7/10 0:00,50,M,Vehicle/Towed Trailer
+6482,211818,I,1/7/10 0:00,11,M,Vehicle/Towed Trailer
+6500,211827,I,1/7/10 0:00,33,M,Vehicle/Towed Trailer
+6325,212034,I,1/20/10 0:00,23,M,Vehicle/Towed Trailer
+6327,212296,I,1/30/10 0:00,22,M,Outside/Open Areas
+6328,212380,D,1/4/10 0:00,,M,Outside/Open Areas
+6330,212392,D,1/12/10 0:00,77,M,Permanent Structure
+6375,212438,I,2/15/10 0:00,20,F,Vehicle/Towed Trailer
+6376,212446,I,2/15/10 0:00,49,F,Vehicle/Towed Trailer
+6574,212587,D,3/25/10 0:00,19,M,Boating
+6472,212785,D,2/11/10 0:00,80,M,Outside/Open Areas
+6473,212787,D,2/11/10 0:00,33,M,Outside/Open Areas
+6462,212815,I,2/10/10 0:00,65,M,Outside/Open Areas
+6463,212815,I,2/10/10 0:00,66,M,Outside/Open Areas
+6416,212869,D,2/10/10 0:00,54,M,Outside/Open Areas
+6417,212884,D,2/10/10 0:00,51,M,Outside/Open Areas
+6339,212908,I,1/3/10 0:00,33,M,Outside/Open Areas
+6340,212973,I,1/19/10 0:00,56,M,Vehicle/Towed Trailer
+6350,213012,D,1/30/10 0:00,34,F,Mobile/Trailer Home
+6343,213044,D,1/29/10 0:00,9,F,Vehicle/Towed Trailer
+6344,213044,D,1/29/10 0:00,41,F,Vehicle/Towed Trailer
+6345,213084,D,1/29/10 0:00,,M,Vehicle/Towed Trailer
+6356,213490,I,1/7/10 0:00,58,M,Vehicle/Towed Trailer
+6361,213556,D,1/25/10 0:00,72,F,Vehicle/Towed Trailer
+6362,213616,I,1/19/10 0:00,53,M,Vehicle/Towed Trailer
+6363,213616,I,1/19/10 0:00,61,M,Vehicle/Towed Trailer
+6369,213636,D,1/2/10 0:00,87,F,Permanent Home
+6370,213636,D,1/4/10 0:00,72,M,Permanent Home
+6371,213636,D,1/5/10 0:00,63,M,Permanent Home
+6368,213637,D,1/3/10 0:00,80,F,Outside/Open Areas
+6373,213638,D,1/28/10 0:00,60,M,Outside/Open Areas
+6372,213638,D,1/27/10 0:00,86,F,Permanent Home
+6377,213691,D,1/20/10 0:00,,M,In Water
+6408,213700,D,1/5/10 0:00,,M,Permanent Home
+6409,213701,D,1/1/10 0:00,68,M,Permanent Home
+6410,213701,D,1/5/10 0:00,,F,Permanent Home
+6382,213777,D,1/22/10 0:00,2,,Vehicle/Towed Trailer
+6383,213853,D,1/18/10 0:00,21,M,Permanent Home
+6389,213976,I,2/12/10 0:00,2,M,Vehicle/Towed Trailer
+6390,213976,I,2/12/10 0:00,4,M,Vehicle/Towed Trailer
+6412,214575,I,2/11/10 0:00,23,M,Vehicle/Towed Trailer
+6398,214672,I,2/23/10 0:00,10,M,Vehicle/Towed Trailer
+6399,214672,I,2/23/10 0:00,35,F,Vehicle/Towed Trailer
+6401,214680,I,4/3/10 0:00,11,F,Vehicle/Towed Trailer
+6436,214782,I,2/4/10 0:00,30,M,Vehicle/Towed Trailer
+6406,214876,I,2/15/10 0:00,26,M,Vehicle/Towed Trailer
+6453,214919,I,2/23/10 0:00,,,Vehicle/Towed Trailer
+6437,215579,D,3/13/10 0:00,59,F,In Water
+6438,215579,D,3/13/10 0:00,32,M,In Water
+6523,215807,I,3/14/10 0:00,41,M,Vehicle/Towed Trailer
+6439,215883,I,2/5/10 0:00,26,M,Vehicle/Towed Trailer
+6440,215884,I,2/5/10 0:00,27,F,Vehicle/Towed Trailer
+6441,215885,I,2/5/10 0:00,27,F,Vehicle/Towed Trailer
+6442,215885,I,2/5/10 0:00,16,F,Vehicle/Towed Trailer
+6503,215979,I,2/5/10 0:00,25,M,Vehicle/Towed Trailer
+6504,215979,I,2/5/10 0:00,54,M,Vehicle/Towed Trailer
+6443,216019,D,2/14/10 0:00,59,M,Permanent Home
+6505,216118,I,2/5/10 0:00,74,M,Outside/Open Areas
+6506,216129,I,2/5/10 0:00,74,M,Outside/Open Areas
+6452,216130,I,2/21/10 0:00,48,M,Vehicle/Towed Trailer
+6459,216243,I,3/20/10 0:00,7,F,Vehicle/Towed Trailer
+6471,216577,D,2/13/10 0:00,34,M,In Water
+6478,216805,I,2/12/10 0:00,,M,Vehicle/Towed Trailer
+6597,217049,D,3/13/10 0:00,,,Vehicle/Towed Trailer
+6595,217057,D,3/13/10 0:00,61,F,Permanent Home
+6596,217057,D,3/13/10 0:00,39,F,Vehicle/Towed Trailer
+6590,217069,D,3/13/10 0:00,73,F,Permanent Home
+6494,217541,I,2/9/10 0:00,73,M,Permanent Home
+6573,217598,I,3/17/10 0:00,49,M,Business
+6499,217745,D,2/25/10 0:00,35,M,Under Tree
+6502,218282,D,2/11/10 0:00,49,M,Outside/Open Areas
+6568,218469,I,3/21/10 0:00,22,M,Vehicle/Towed Trailer
+6569,218469,I,3/21/10 0:00,,M,Vehicle/Towed Trailer
+6868,218494,D,4/17/10 0:00,83,M,Outside/Open Areas
+6509,218499,D,2/12/10 0:00,12,F,In Water
+6518,218778,D,3/14/10 0:00,42,M,Vehicle/Towed Trailer
+6570,219097,D,1/6/10 0:00,,M,Outside/Open Areas
+6528,219124,I,3/29/10 0:00,18,M,In Water
+6529,219124,I,3/29/10 0:00,16,F,In Water
+6615,219252,D,4/30/10 0:00,67,F,Permanent Home
+6531,219265,D,4/30/10 0:00,63,M,Vehicle/Towed Trailer
+6613,219271,D,5/1/10 0:00,45,M,In Water
+6577,219644,D,2/11/10 0:00,26,M,Outside/Open Areas
+6578,219745,D,2/23/10 0:00,,,Outside/Open Areas
+6567,219748,D,3/14/10 0:00,49,M,Outside/Open Areas
+6542,219973,D,3/30/10 0:00,44,M,Outside/Open Areas
+6543,219973,D,3/30/10 0:00,44,M,Outside/Open Areas
+6881,220150,D,3/30/10 0:00,,F,Outside/Open Areas
+6550,220337,I,3/12/10 0:00,69,M,Vehicle/Towed Trailer
+6556,220496,I,5/2/10 0:00,58,F,Vehicle/Towed Trailer
+6566,221206,D,3/12/10 0:00,20,M,In Water
+6571,221616,D,3/8/10 0:00,36,M,In Water
+6572,221616,D,3/8/10 0:00,39,M,In Water
+6575,221865,D,3/3/10 0:00,58,M,Outside/Open Areas
+6585,222162,I,4/30/10 0:00,52,M,In Water
+6586,222162,I,4/30/10 0:00,29,F,In Water
+6587,222162,I,4/30/10 0:00,57,M,In Water
+6588,222173,D,4/30/10 0:00,26,M,In Water
+6599,222594,D,5/22/10 0:00,7,M,Outside/Open Areas
+7665,222668,I,3/14/10 0:00,75,M,In Water
+6601,222685,D,3/19/10 0:00,56,M,Long Span Roof
+6602,222685,D,3/19/10 0:00,53,M,Long Span Roof
+6603,222686,D,3/12/10 0:00,55,M,Outside/Open Areas
+6616,223547,D,5/31/10 0:00,53,M,In Water
+7019,224551,D,4/24/10 0:00,79,F,Mobile/Trailer Home
+7020,224551,D,4/24/10 0:00,64,M,Mobile/Trailer Home
+7021,224551,D,4/24/10 0:00,51,M,Mobile/Trailer Home
+7022,224551,D,4/24/10 0:00,31,F,Mobile/Trailer Home
+6871,224552,D,4/24/10 0:00,70,M,Mobile/Trailer Home
+6889,224615,D,4/24/10 0:00,0,F,Mobile/Trailer Home
+6890,224615,D,4/24/10 0:00,9,F,Outside/Open Areas
+6891,224615,D,4/24/10 0:00,14,F,Outside/Open Areas
+6892,224615,D,4/24/10 0:00,58,F,Vehicle/Towed Trailer
+6893,224615,D,4/24/10 0:00,58,M,Vehicle/Towed Trailer
+6818,224669,I,4/29/10 0:00,1,F,Vehicle/Towed Trailer
+7649,224865,D,5/31/10 0:00,,M,Outside/Open Areas
+7565,224976,D,6/11/10 0:00,3,M,Camping
+7566,224976,D,6/11/10 0:00,23,F,Camping
+7567,224976,D,6/11/10 0:00,43,F,Camping
+7568,224976,D,6/11/10 0:00,34,M,Camping
+7569,224976,D,6/11/10 0:00,6,M,Camping
+7570,224976,D,6/11/10 0:00,30,M,Camping
+7571,224976,D,6/11/10 0:00,2,F,Camping
+7572,224976,D,6/11/10 0:00,5,M,Camping
+7573,224976,D,6/11/10 0:00,51,M,Camping
+7574,224976,D,6/11/10 0:00,69,F,Camping
+7575,224976,D,6/11/10 0:00,52,F,Camping
+7576,224976,D,6/11/10 0:00,68,M,Camping
+7577,224976,D,6/11/10 0:00,38,M,Camping
+7578,224976,D,6/11/10 0:00,7,F,Camping
+7579,224976,D,6/11/10 0:00,6,F,Camping
+7580,224976,D,6/11/10 0:00,46,F,Camping
+7581,224976,D,6/11/10 0:00,8,F,Camping
+7582,224976,D,6/11/10 0:00,67,F,Camping
+7583,224976,D,6/11/10 0:00,8,M,Camping
+7584,224976,D,6/11/10 0:00,53,F,Camping
+6897,225173,I,4/24/10 0:00,32,M,Vehicle/Towed Trailer
+6848,225226,I,4/24/10 0:00,67,M,Permanent Home
+7206,225230,D,5/1/10 0:00,18,M,Under Tree
+6861,225233,D,4/21/10 0:00,,M,In Water
+6862,225233,D,4/21/10 0:00,,M,In Water
+6794,225435,I,4/8/10 0:00,18,M,Vehicle/Towed Trailer
+6795,225435,I,4/8/10 0:00,15,F,Vehicle/Towed Trailer
+6904,225857,D,4/4/10 0:00,43,M,Outside/Open Areas
+8567,225879,D,4/15/10 0:00,73,M,Vehicle/Towed Trailer
+7597,226101,D,6/20/10 0:00,69,M,Mobile/Trailer Home
+6850,226177,D,4/23/10 0:00,68,M,Vehicle/Towed Trailer
+8109,226199,D,5/2/10 0:00,70,M,Outside/Open Areas
+8110,226199,D,5/2/10 0:00,65,F,Outside/Open Areas
+8112,226199,D,5/2/10 0:00,18,M,Outside/Open Areas
+8104,226199,D,5/2/10 0:00,80,F,Permanent Home
+8105,226199,D,5/2/10 0:00,79,M,Permanent Home
+8111,226199,D,5/2/10 0:00,86,F,Permanent Home
+8106,226199,D,5/2/10 0:00,88,M,Vehicle/Towed Trailer
+8107,226199,D,5/2/10 0:00,78,F,Vehicle/Towed Trailer
+8108,226199,D,5/2/10 0:00,75,M,Vehicle/Towed Trailer
+8113,226199,D,5/1/10 0:00,39,M,Vehicle/Towed Trailer
+8125,226314,D,5/3/10 0:00,63,F,Vehicle/Towed Trailer
+7231,226316,D,6/2/10 0:00,8,M,Outside/Open Areas
+6905,226409,D,5/3/10 0:00,35,M,Vehicle/Towed Trailer
+6906,226409,D,5/3/10 0:00,30,M,Vehicle/Towed Trailer
+7435,227030,D,6/20/10 0:00,70,M,Outside/Open Areas
+6884,227063,I,4/11/10 0:00,79,M,In Water
+6883,227063,I,4/11/10 0:00,40,M,Vehicle/Towed Trailer
+6894,227518,D,6/24/10 0:00,30,M,Boating
+7558,227647,D,6/27/10 0:00,75,M,Camping
+6898,228117,I,4/24/10 0:00,50,F,Unknown
+7216,228644,D,5/26/10 0:00,,M,In Water
+7217,228644,D,5/26/10 0:00,,M,In Water
+7617,228648,D,6/6/10 0:00,26,M,In Water
+7618,228648,D,6/6/10 0:00,31,M,In Water
+7074,228718,I,5/3/10 0:00,47,M,Outside/Open Areas
+7308,229290,D,5/1/10 0:00,56,M,Outside/Open Areas
+7295,229299,D,5/1/10 0:00,32,M,Vehicle/Towed Trailer
+7298,229418,D,5/1/10 0:00,30,M,In Water
+7299,229590,D,5/1/10 0:00,81,M,Vehicle/Towed Trailer
+7215,230056,D,5/8/10 0:00,29,M,Outside/Open Areas
+7017,230262,D,6/9/10 0:00,8,M,In Water
+7018,230262,D,6/9/10 0:00,11,M,In Water
+7453,231119,D,6/15/10 0:00,38,M,In Water
+7630,231404,D,6/17/10 0:00,67,F,Mobile/Trailer Home
+7282,231939,D,5/10/10 0:00,41,M,Outside/Open Areas
+7283,231939,D,6/8/10 0:00,65,F,Outside/Open Areas
+7279,231948,D,5/10/10 0:00,27,F,Mobile/Trailer Home
+7036,232484,D,5/25/10 0:00,61,M,Permanent Home
+7039,232488,D,5/26/10 0:00,49,M,Outside/Open Areas
+7037,232488,D,5/25/10 0:00,67,M,Permanent Home
+7038,232488,D,5/26/10 0:00,73,M,Permanent Home
+8582,233349,D,5/12/10 0:00,32,M,Vehicle/Towed Trailer
+8124,233431,D,5/1/10 0:00,70,M,Vehicle/Towed Trailer
+7743,233543,D,7/16/10 0:00,51,M,Outside/Open Areas
+7077,233638,D,7/14/10 0:00,53,M,Golfing
+7199,233711,D,7/14/10 0:00,2,F,Vehicle/Towed Trailer
+7084,233827,I,5/7/10 0:00,,,Vehicle/Towed Trailer
+7085,233879,D,6/8/10 0:00,43,F,Permanent Home
+7086,233880,D,6/4/10 0:00,72,F,Outside/Open Areas
+7088,233993,I,5/27/10 0:00,1,M,Vehicle/Towed Trailer
+7090,234575,I,5/5/10 0:00,3,M,Vehicle/Towed Trailer
+7191,234586,D,5/14/10 0:00,47,F,Vehicle/Towed Trailer
+7092,234601,D,7/15/10 0:00,79,M,Mobile/Trailer Home
+7179,234854,D,5/2/10 0:00,44,M,Mobile/Trailer Home
+7180,234854,D,5/2/10 0:00,15,F,Mobile/Trailer Home
+7181,234855,D,5/2/10 0:00,70,F,Permanent Home
+7464,234864,D,6/16/10 0:00,2,F,Vehicle/Towed Trailer
+7465,234864,D,6/16/10 0:00,2,F,Vehicle/Towed Trailer
+7197,235557,D,5/14/10 0:00,46,F,Vehicle/Towed Trailer
+7198,235604,I,5/31/10 0:00,9,M,In Water
+7722,235773,I,7/21/10 0:00,21,M,Outside/Open Areas
+7563,235913,D,6/18/10 0:00,62,M,Outside/Open Areas
+7437,236250,I,7/12/10 0:00,56,M,Unknown
+7205,236304,I,6/19/10 0:00,28,M,Boating
+7209,236728,D,7/25/10 0:00,86,M,Permanent Home
+7211,236730,D,5/15/10 0:00,57,F,In Water
+7212,236730,D,5/15/10 0:00,70,M,In Water
+7213,236731,D,5/15/10 0:00,18,M,In Water
+7223,237130,D,5/2/10 0:00,65,M,Permanent Home
+7220,237139,D,5/23/10 0:00,59,M,Boating
+7221,237139,D,5/23/10 0:00,50,F,Boating
+7248,237144,D,5/2/10 0:00,27,F,Vehicle/Towed Trailer
+7232,237147,D,5/1/10 0:00,34,M,Vehicle/Towed Trailer
+7225,237151,D,5/2/10 0:00,47,M,Vehicle/Towed Trailer
+7228,237216,D,5/28/10 0:00,58,M,Vehicle/Towed Trailer
+7229,237216,D,5/28/10 0:00,54,F,Vehicle/Towed Trailer
+7260,237666,D,5/2/10 0:00,25,F,Mobile/Trailer Home
+7261,237666,D,5/2/10 0:00,26,M,Mobile/Trailer Home
+7256,237687,D,5/2/10 0:00,67,F,Mobile/Trailer Home
+8126,237774,D,5/1/10 0:00,21,M,In Water
+7306,237801,D,5/2/10 0:00,45,F,Permanent Home
+7275,237805,I,5/2/10 0:00,20,M,Vehicle/Towed Trailer
+7307,237806,D,5/2/10 0:00,66,M,Vehicle/Towed Trailer
+7277,237807,I,5/2/10 0:00,16,F,Vehicle/Towed Trailer
+7284,238054,I,6/15/10 0:00,59,F,Permanent Home
+7626,238164,D,6/16/10 0:00,39,F,Mobile/Trailer Home
+7285,238223,D,5/15/10 0:00,25,F,Vehicle/Towed Trailer
+7701,238346,D,7/19/10 0:00,63,F,Outside/Open Areas
+7699,238346,D,7/18/10 0:00,66,M,Permanent Home
+7700,238346,D,7/19/10 0:00,85,M,Permanent Home
+7703,238346,D,7/20/10 0:00,67,M,Permanent Home
+7704,238346,D,7/20/10 0:00,42,M,Permanent Structure
+7702,238346,D,7/19/10 0:00,65,M,Vehicle/Towed Trailer
+7286,238434,I,7/25/10 0:00,53,F,Outside/Open Areas
+7302,238880,I,4/30/10 0:00,31,M,Vehicle/Towed Trailer
+7310,239400,D,8/3/10 0:00,41,M,Outside/Open Areas
+7313,239549,D,8/4/10 0:00,66,F,Outside/Open Areas
+7466,239602,D,6/5/10 0:00,20,F,Outside/Open Areas
+7468,239602,D,6/5/10 0:00,46,M,Permanent Home
+7469,239602,D,7/29/10 0:00,87,M,Permanent Home
+7470,239602,D,6/12/10 0:00,37,M,Permanent Home
+7471,239602,D,6/5/10 0:00,36,F,Permanent Home
+7472,239602,D,6/5/10 0:00,4,M,Permanent Home
+7467,239602,D,6/5/10 0:00,56,F,Vehicle/Towed Trailer
+7894,240050,D,8/11/10 0:00,16,F,Vehicle/Towed Trailer
+7428,240537,I,6/20/10 0:00,79,,Unknown
+7427,240537,D,6/20/10 0:00,73,,Permanent Home
+7429,240600,D,6/2/10 0:00,50,M,Outside/Open Areas
+7430,240600,D,6/3/10 0:00,77,M,Permanent Home
+7433,240893,I,6/4/10 0:00,3,M,Vehicle/Towed Trailer
+7432,240901,D,6/24/10 0:00,47,F,Camping
+7434,241186,D,1/20/10 0:00,40,M,In Water
+7473,241741,D,6/6/10 0:00,36,M,Outside/Open Areas
+8568,241764,D,6/14/10 0:00,50,M,Vehicle/Towed Trailer
+7895,241811,D,10/12/10 0:00,16,M,Ball Field
+7442,241916,D,6/23/10 0:00,,,Outside/Open Areas
+7445,242052,D,6/28/10 0:00,88,M,Permanent Home
+7446,242052,D,6/28/10 0:00,46,F,Permanent Home
+7449,242268,D,6/12/10 0:00,53,M,Vehicle/Towed Trailer
+7454,242380,D,6/15/10 0:00,19,M,Under Tree
+7610,242509,D,6/22/10 0:00,12,F,In Water
+7456,242510,D,6/29/10 0:00,14,M,In Water
+7457,242571,D,8/2/10 0:00,61,M,Outside/Open Areas
+7458,242572,D,8/15/10 0:00,64,M,Permanent Home
+7459,242573,D,8/16/10 0:00,58,M,Permanent Home
+7460,242574,D,8/16/10 0:00,60,M,Heavy Equipment/Construction
+7461,242581,D,8/14/10 0:00,87,F,Permanent Home
+7462,242707,D,7/17/10 0:00,,F,In Water
+8099,242713,I,7/17/10 0:00,,,Mobile/Trailer Home
+8100,242713,I,7/17/10 0:00,,,Mobile/Trailer Home
+8098,242729,I,7/17/10 0:00,,M,Outside/Open Areas
+7834,243571,D,7/23/10 0:00,21,F,Outside/Open Areas
+7474,243588,I,8/22/10 0:00,51,F,Vehicle/Towed Trailer
+7594,243602,I,7/30/10 0:00,25,F,Vehicle/Towed Trailer
+7847,243682,D,7/26/10 0:00,10,M,Permanent Home
+7848,243682,D,7/26/10 0:00,46,M,Permanent Home
+7777,243695,I,6/2/10 0:00,47,F,Permanent Home
+7784,243724,D,6/21/10 0:00,70,M,Permanent Home
+7785,243724,D,6/23/10 0:00,88,M,Permanent Home
+7786,243724,D,6/20/10 0:00,79,F,Permanent Home
+7787,243724,D,6/24/10 0:00,53,M,Permanent Home
+7788,243724,D,6/27/10 0:00,90,F,Permanent Home
+7789,243726,D,6/19/10 0:00,3,M,Vehicle/Towed Trailer
+7545,243801,D,6/15/10 0:00,34,F,Under Tree
+7560,243813,D,6/14/10 0:00,4,M,Vehicle/Towed Trailer
+7778,243866,D,6/15/10 0:00,82,M,Outside/Open Areas
+7551,243968,D,6/21/10 0:00,2,M,Vehicle/Towed Trailer
+7552,243985,D,8/24/10 0:00,0,F,Vehicle/Towed Trailer
+7553,244100,I,6/18/10 0:00,,,Vehicle/Towed Trailer
+7554,244145,D,6/29/10 0:00,,F,Unknown
+7555,244146,D,6/24/10 0:00,,,Unknown
+7556,244146,D,6/24/10 0:00,,,Unknown
+7557,244147,D,6/24/10 0:00,,,Unknown
+7564,244795,D,6/25/10 0:00,44,M,In Water
+7588,245139,D,6/9/10 0:00,65,M,Camping
+7591,245162,D,8/4/10 0:00,33,M,Long Span Roof
+7592,245162,D,8/4/10 0:00,25,M,Long Span Roof
+7625,245446,D,7/21/10 0:00,72,F,Mobile/Trailer Home
+7638,245530,D,6/17/10 0:00,78,F,Outside/Open Areas
+7598,245616,D,7/21/10 0:00,53,F,Outside/Open Areas
+7599,245797,D,8/5/10 0:00,,M,Unknown
+7601,245876,D,6/17/10 0:00,58,M,Business
+7603,246291,D,7/25/10 0:00,41,M,In Water
+7608,246320,D,6/30/10 0:00,2,F,Vehicle/Towed Trailer
+7616,246325,D,6/29/10 0:00,14,M,Outside/Open Areas
+7612,246381,I,6/27/10 0:00,,,Unknown
+7613,246491,D,6/22/10 0:00,32,F,Permanent Home
+7615,246705,D,8/28/10 0:00,47,M,In Water
+7619,246808,D,7/3/10 0:00,19,M,In Water
+7622,246838,D,8/22/10 0:00,14,M,In Water
+7623,246838,D,8/22/10 0:00,17,M,In Water
+7624,246839,D,8/16/10 0:00,9,M,In Water
+7634,247075,D,8/4/10 0:00,62,F,Vehicle/Towed Trailer
+8564,247573,D,8/1/10 0:00,22,M,Vehicle/Towed Trailer
+7641,247871,D,6/4/10 0:00,25,F,Outside/Open Areas
+7813,247932,D,7/25/10 0:00,15,F,In Water
+7643,247948,D,8/7/10 0:00,51,M,In Water
+7644,247949,D,8/24/10 0:00,48,M,In Water
+8004,248257,D,9/3/10 0:00,26,M,In Water
+7650,248532,D,7/11/10 0:00,63,M,Outside/Open Areas
+7654,248978,D,7/19/10 0:00,49,M,Under Tree
+7890,249043,D,8/2/10 0:00,48,M,Outside/Open Areas
+7657,249119,D,7/28/10 0:00,57,M,Outside/Open Areas
+7755,249121,D,7/13/10 0:00,16,F,Under Tree
+7756,249121,D,7/13/10 0:00,14,F,Under Tree
+7659,249196,I,7/25/10 0:00,6,M,Other
+7940,249339,D,7/8/10 0:00,21,M,In Water
+7941,249339,D,7/4/10 0:00,24,M,In Water
+7664,249621,D,7/28/10 0:00,44,M,In Water
+7773,249624,D,7/20/10 0:00,48,F,In Water
+7666,249818,D,7/14/10 0:00,22,M,In Water
+7954,249841,D,7/6/10 0:00,46,F,Unknown
+7955,249841,D,7/5/10 0:00,57,M,Unknown
+7956,249841,D,7/6/10 0:00,70,M,Unknown
+7957,249841,D,7/7/10 0:00,69,M,Unknown
+7958,249876,D,7/8/10 0:00,51,M,Unknown
+7959,249876,D,7/8/10 0:00,60,M,Unknown
+7688,249879,D,7/4/10 0:00,81,M,Permanent Home
+7673,249882,D,7/4/10 0:00,56,F,Vehicle/Towed Trailer
+7967,249896,D,7/25/10 0:00,48,M,Unknown
+7968,249896,D,7/25/10 0:00,23,M,Unknown
+8120,249978,D,9/4/10 0:00,16,F,In Water
+7790,250073,D,7/23/10 0:00,57,M,Permanent Home
+7791,250093,D,7/25/10 0:00,56,M,Vehicle/Towed Trailer
+7792,250113,D,7/30/10 0:00,66,M,Outside/Open Areas
+7795,250149,D,7/31/10 0:00,81,F,Outside/Open Areas
+7692,250391,D,7/16/10 0:00,81,M,Permanent Home
+7693,250391,D,7/16/10 0:00,61,M,Permanent Home
+7691,250394,D,7/19/10 0:00,91,F,Permanent Home
+7690,250394,D,7/17/10 0:00,85,F,Permanent Structure
+7696,250640,D,7/9/10 0:00,81,M,Outside/Open Areas
+7697,250640,D,7/12/10 0:00,40,M,Outside/Open Areas
+7698,250640,D,7/12/10 0:00,49,M,Outside/Open Areas
+7695,250640,D,7/7/10 0:00,61,M,Permanent Home
+7694,250640,D,7/4/10 0:00,53,F,Permanent Structure
+7705,250643,D,7/24/10 0:00,73,M,Vehicle/Towed Trailer
+7717,250644,D,7/30/10 0:00,53,M,Outside/Open Areas
+7715,250644,D,7/27/10 0:00,52,F,Permanent Home
+7712,250644,D,7/24/10 0:00,34,M,Permanent Structure
+7713,250644,D,7/25/10 0:00,46,M,Permanent Structure
+7714,250644,D,7/27/10 0:00,54,M,Permanent Structure
+7716,250644,D,7/28/10 0:00,79,M,Permanent Structure
+7718,250647,D,8/3/10 0:00,82,F,Permanent Home
+7719,250647,D,8/6/10 0:00,63,F,Permanent Home
+7720,250648,D,8/6/10 0:00,86,M,Outside/Open Areas
+7725,250916,D,7/23/10 0:00,90,M,Outside/Open Areas
+7726,250916,D,7/23/10 0:00,83,F,Outside/Open Areas
+7728,250961,D,7/8/10 0:00,76,M,Unknown
+7759,251107,D,7/26/10 0:00,47,F,Outside/Open Areas
+7732,251292,D,7/12/10 0:00,,M,In Water
+7919,251352,I,8/5/10 0:00,2,F,Vehicle/Towed Trailer
+7735,251416,D,8/17/10 0:00,16,M,In Water
+8586,251477,D,7/13/10 0:00,0,M,Vehicle/Towed Trailer
+7740,251577,D,8/7/10 0:00,64,M,Permanent Home
+7737,251687,D,7/25/10 0:00,40,M,Outside/Open Areas
+7739,251771,D,9/20/10 0:00,0,F,Vehicle/Towed Trailer
+7742,251887,D,7/20/10 0:00,,M,Boating
+7836,252191,D,7/22/10 0:00,19,M,Vehicle/Towed Trailer
+8044,252235,D,10/7/10 0:00,21,M,Ball Field
+7748,252466,I,8/13/10 0:00,78,F,In Water
+7750,252705,I,7/18/10 0:00,17,M,In Water
+7751,252705,I,7/18/10 0:00,11,M,In Water
+8028,252947,D,9/22/10 0:00,27,M,In Water
+7753,252987,D,9/22/10 0:00,70,M,Under Tree
+7754,252987,D,9/22/10 0:00,63,M,Under Tree
+8145,253066,D,7/4/10 0:00,65,F,Permanent Home
+7807,253123,D,7/20/10 0:00,12,F,In Water
+7854,253277,D,7/6/10 0:00,13,M,In Water
+7767,253313,D,7/13/10 0:00,20,M,Boating
+7768,253455,D,7/24/10 0:00,20,M,Vehicle/Towed Trailer
+7769,253457,D,7/24/10 0:00,90,F,Permanent Home
+7770,253457,D,7/24/10 0:00,56,M,Permanent Home
+7771,253457,D,7/25/10 0:00,66,F,Permanent Home
+7806,253764,D,7/6/10 0:00,89,M,Permanent Home
+7797,253765,D,7/6/10 0:00,62,M,Permanent Home
+7798,253765,D,7/6/10 0:00,56,M,Permanent Home
+7799,253765,D,7/6/10 0:00,53,M,Permanent Home
+7800,253766,D,7/5/10 0:00,92,F,Permanent Home
+7801,253766,D,7/8/10 0:00,90,F,Permanent Home
+7802,253766,D,7/8/10 0:00,78,M,Permanent Home
+7803,253766,D,7/8/10 0:00,67,M,Permanent Home
+7804,253766,D,7/9/10 0:00,73,M,Permanent Home
+7805,253766,D,7/10/10 0:00,62,M,Permanent Home
+7808,253872,D,7/25/10 0:00,26,M,In Water
+7810,253895,D,8/1/10 0:00,40,M,Boating
+7811,253896,D,8/2/10 0:00,48,M,Heavy Equipment/Construction
+7821,254053,D,7/14/10 0:00,,M,Boating
+7822,254053,D,7/14/10 0:00,,M,Boating
+7823,254053,D,7/14/10 0:00,,M,Boating
+7824,254053,D,7/14/10 0:00,,M,Boating
+7819,254073,D,7/3/10 0:00,48,M,In Water
+7818,254073,D,7/4/10 0:00,31,F,Outside/Open Areas
+7846,254086,D,7/27/10 0:00,18,F,Outside/Open Areas
+7830,254289,D,7/2/10 0:00,,F,In Water
+7831,254289,D,7/2/10 0:00,3,F,In Water
+7832,254305,D,7/18/10 0:00,59,M,Permanent Home
+7833,254310,D,7/29/10 0:00,95,F,Permanent Home
+7839,254410,D,7/22/10 0:00,93,M,Unknown
+7845,254474,I,7/24/10 0:00,56,M,In Water
+8573,254495,D,7/2/10 0:00,83,M,Vehicle/Towed Trailer
+8574,254495,D,7/2/10 0:00,84,F,Vehicle/Towed Trailer
+7920,254718,D,8/4/10 0:00,86,F,Permanent Home
+7892,254719,D,8/5/10 0:00,84,M,Outside/Open Areas
+7852,254919,D,8/12/10 0:00,71,F,In Water
+7853,254919,D,8/12/10 0:00,,M,In Water
+7993,254958,D,8/12/10 0:00,51,M,Vehicle/Towed Trailer
+7926,255074,D,8/4/10 0:00,70,M,Outside/Open Areas
+7927,255074,D,8/4/10 0:00,64,F,Outside/Open Areas
+7928,255074,D,8/5/10 0:00,,M,Outside/Open Areas
+7924,255074,D,8/3/10 0:00,77,M,Permanent Home
+7925,255074,D,8/4/10 0:00,81,F,Permanent Home
+7929,255074,D,8/7/10 0:00,46,M,Permanent Home
+7930,255074,D,8/7/10 0:00,67,F,Permanent Home
+8062,255151,D,8/4/10 0:00,55,M,Heavy Equipment/Construction
+8063,255158,D,8/6/10 0:00,63,F,Permanent Home
+8064,255178,D,8/1/10 0:00,50,M,Permanent Home
+7872,255199,D,8/11/10 0:00,57,M,Outside/Open Areas
+7873,255199,D,8/12/10 0:00,85,F,Permanent Home
+7874,255199,D,8/14/10 0:00,67,M,Permanent Home
+7875,255199,D,8/15/10 0:00,74,M,Permanent Home
+7862,255285,D,7/25/10 0:00,48,M,Under Tree
+7876,255494,D,8/23/10 0:00,63,M,Permanent Home
+7931,255521,D,8/23/10 0:00,53,M,Other
+8009,255627,D,9/16/10 0:00,57,M,Permanent Home
+7949,255786,D,8/5/10 0:00,50,M,Outside/Open Areas
+7964,255979,D,8/8/10 0:00,37,F,Outside/Open Areas
+7893,256218,D,7/25/10 0:00,65,M,In Water
+8002,256544,D,8/4/10 0:00,18,M,Heavy Equipment/Construction
+7906,256620,D,8/2/10 0:00,86,M,Permanent Home
+7907,256620,D,8/3/10 0:00,92,F,Permanent Home
+7995,256650,D,8/10/10 0:00,21,M,In Water
+7911,256742,D,8/31/10 0:00,23,M,In Water
+7992,256782,I,8/29/10 0:00,78,F,Vehicle/Towed Trailer
+8000,256874,D,7/30/10 0:00,57,F,Mobile/Trailer Home
+8001,256874,D,7/30/10 0:00,65,F,Mobile/Trailer Home
+7942,256947,I,8/22/10 0:00,23,F,Other
+7948,257223,I,8/13/10 0:00,2,F,Vehicle/Towed Trailer
+7951,258059,D,8/10/10 0:00,37,M,Outside/Open Areas
+7952,258221,D,8/21/10 0:00,45,M,Camping
+8560,258258,I,1/21/10 0:00,6,M,Vehicle/Towed Trailer
+7960,258273,D,7/8/10 0:00,61,M,Unknown
+7961,258273,D,7/8/10 0:00,44,F,Unknown
+8040,258297,D,9/17/10 0:00,16,M,In Water
+7996,258394,D,8/5/10 0:00,16,F,Outside/Open Areas
+7970,258403,I,8/21/10 0:00,,M,Permanent Structure
+7976,258609,D,7/21/10 0:00,62,M,In Water
+7981,258610,D,8/5/10 0:00,16,M,In Water
+7982,258610,D,8/5/10 0:00,15,M,In Water
+7979,258611,D,8/5/10 0:00,16,M,In Water
+7980,258611,D,8/5/10 0:00,50,M,In Water
+7987,258759,D,8/27/10 0:00,18,M,In Water
+7989,258851,D,8/12/10 0:00,1,F,Permanent Home
+7991,258853,D,8/13/10 0:00,1,F,Vehicle/Towed Trailer
+7997,259392,D,8/21/10 0:00,45,M,In Water
+7999,259397,D,8/21/10 0:00,43,F,In Water
+8007,259551,D,9/7/10 0:00,80,M,Outside/Open Areas
+8010,260024,D,9/8/10 0:00,29,M,Under Tree
+8015,260164,D,9/12/10 0:00,3,F,Vehicle/Towed Trailer
+8600,260347,D,9/30/10 0:00,29,F,Vehicle/Towed Trailer
+8601,260347,D,9/30/10 0:00,27,M,Vehicle/Towed Trailer
+8602,260347,D,9/30/10 0:00,3,M,Vehicle/Towed Trailer
+8603,260347,D,9/30/10 0:00,3,M,Vehicle/Towed Trailer
+8604,260347,D,9/30/10 0:00,1,M,Vehicle/Towed Trailer
+8029,260348,D,9/7/10 0:00,19,F,Vehicle/Towed Trailer
+8019,260549,D,9/2/10 0:00,20,M,In Water
+8020,260617,D,9/6/10 0:00,61,M,Boating
+8030,260674,D,9/8/10 0:00,49,M,Vehicle/Towed Trailer
+8054,260955,D,9/8/10 0:00,51,F,Vehicle/Towed Trailer
+8052,260962,D,9/8/10 0:00,41,M,Outside/Open Areas
+8053,261086,D,9/8/10 0:00,57,M,Vehicle/Towed Trailer
+8036,261301,D,9/20/10 0:00,35,M,Vehicle/Towed Trailer
+8037,262045,I,9/30/10 0:00,47,M,Vehicle/Towed Trailer
+8041,262329,D,9/17/10 0:00,18,F,Outside/Open Areas
+8488,262537,I,9/16/10 0:00,57,M,Unknown
+8489,262537,D,9/16/10 0:00,,F,Vehicle/Towed Trailer
+8046,262722,I,9/2/10 0:00,1,,Other
+8055,263044,D,9/9/10 0:00,19,M,Vehicle/Towed Trailer
+8056,263334,D,8/14/10 0:00,65,M,Permanent Home
+8057,263337,D,8/12/10 0:00,74,F,Permanent Home
+8058,263398,D,8/4/10 0:00,68,M,Permanent Home
+8069,263413,I,11/22/10 0:00,58,F,Vehicle/Towed Trailer
+8070,263413,I,11/22/10 0:00,59,M,Vehicle/Towed Trailer
+8059,263982,I,10/29/10 0:00,42,M,Under Tree
+8060,264065,D,8/7/10 0:00,34,M,Boating
+8142,264226,I,11/14/10 0:00,27,M,Vehicle/Towed Trailer
+8328,264416,D,12/11/10 0:00,61,M,Outside/Open Areas
+8325,264430,I,12/11/10 0:00,54,M,Outside/Open Areas
+8362,264432,I,12/11/10 0:00,55,M,Outside/Open Areas
+8360,264444,I,12/11/10 0:00,79,M,Outside/Open Areas
+8359,264444,D,12/11/10 0:00,58,M,Permanent Structure
+8135,264461,D,10/1/10 0:00,55,F,Vehicle/Towed Trailer
+8090,265075,D,12/14/10 0:00,57,M,Vehicle/Towed Trailer
+8119,265090,D,10/27/10 0:00,20,M,Ball Field
+8092,265205,D,10/24/10 0:00,41,M,Outside/Open Areas
+8123,265556,I,12/16/10 0:00,65,M,Vehicle/Towed Trailer
+8118,265678,D,10/1/10 0:00,55,F,Vehicle/Towed Trailer
+8115,265727,I,11/13/10 0:00,62,F,Vehicle/Towed Trailer
+8116,265727,I,11/13/10 0:00,70,M,Vehicle/Towed Trailer
+8133,266013,I,10/1/10 0:00,46,M,Boating
+8134,266013,I,10/1/10 0:00,50,F,Boating
+8129,266125,D,12/26/10 0:00,49,M,Vehicle/Towed Trailer
+8130,266131,D,12/16/10 0:00,,M,Vehicle/Towed Trailer
+8131,266150,D,5/1/10 0:00,53,M,In Water
+8132,266150,D,5/1/10 0:00,63,F,In Water
+8136,266263,D,10/25/10 0:00,63,F,In Water
+8137,266374,D,11/9/10 0:00,46,M,In Water
+8138,266377,D,11/29/10 0:00,25,M,In Water
+8139,266437,D,8/20/10 0:00,23,F,Vehicle/Towed Trailer
+8195,266523,I,12/30/10 0:00,29,M,Vehicle/Towed Trailer
+8258,266726,I,12/12/10 0:00,43,M,Vehicle/Towed Trailer
+8287,266881,D,12/12/10 0:00,37,M,Outside/Open Areas
+8172,267257,I,12/13/10 0:00,52,F,Vehicle/Towed Trailer
+8170,267268,I,12/13/10 0:00,78,M,Outside/Open Areas
+8146,267276,D,11/26/10 0:00,54,M,Outside/Open Areas
+8340,267280,I,12/12/10 0:00,52,F,Vehicle/Towed Trailer
+8237,267294,I,11/20/10 0:00,22,F,Vehicle/Towed Trailer
+8238,267294,I,11/20/10 0:00,0,M,Vehicle/Towed Trailer
+8239,267294,I,11/20/10 0:00,31,F,Vehicle/Towed Trailer
+8240,267294,I,11/20/10 0:00,2,F,Vehicle/Towed Trailer
+8166,267301,I,12/15/10 0:00,25,M,Vehicle/Towed Trailer
+8167,267301,I,12/15/10 0:00,44,M,Vehicle/Towed Trailer
+8175,267343,I,12/17/10 0:00,47,M,Vehicle/Towed Trailer
+8341,267354,I,12/24/10 0:00,37,M,Vehicle/Towed Trailer
+8363,267533,D,12/31/10 0:00,88,M,Mobile/Trailer Home
+8364,267533,D,12/31/10 0:00,78,F,Mobile/Trailer Home
+8366,267533,D,1/4/11 0:00,95,F,Mobile/Trailer Home
+8365,267533,D,12/31/10 0:00,78,M,Outside/Open Areas
+8299,267577,D,12/31/10 0:00,69,F,Mobile/Trailer Home
+8300,267577,D,12/31/10 0:00,64,F,Mobile/Trailer Home
+8186,267674,I,11/19/10 0:00,38,F,Vehicle/Towed Trailer
+8399,267705,D,12/31/10 0:00,21,F,Mobile/Trailer Home
+8400,267705,D,12/31/10 0:00,64,F,Mobile/Trailer Home
+8356,268075,I,12/14/10 0:00,57,M,Permanent Home
+8198,268353,I,11/19/10 0:00,,M,Vehicle/Towed Trailer
+8199,268380,I,11/30/10 0:00,,M,Unknown
+8202,268503,D,12/6/10 0:00,50,F,Outside/Open Areas
+8200,268503,D,12/5/10 0:00,34,M,Permanent Home
+8201,268503,D,12/6/10 0:00,69,M,Permanent Home
+8204,268509,D,12/13/10 0:00,47,M,Outside/Open Areas
+8205,268511,D,12/22/10 0:00,76,F,Permanent Home
+8422,268512,D,12/3/10 0:00,61,M,Outside/Open Areas
+8423,268512,D,12/5/10 0:00,44,M,Outside/Open Areas
+8424,268552,D,12/28/10 0:00,36,M,Permanent Home
+8214,268565,I,11/22/10 0:00,70,M,Vehicle/Towed Trailer
+8215,268594,I,11/24/10 0:00,15,M,Vehicle/Towed Trailer
+8358,268697,I,12/30/10 0:00,,,Vehicle/Towed Trailer
+8231,268905,I,11/22/10 0:00,,M,Vehicle/Towed Trailer
+8229,268908,I,11/22/10 0:00,42,M,Vehicle/Towed Trailer
+8254,268929,D,11/22/10 0:00,41,M,Outside/Open Areas
+8256,268992,I,12/24/10 0:00,43,F,Vehicle/Towed Trailer
+8416,269078,I,11/20/10 0:00,30,M,Vehicle/Towed Trailer
+8245,269499,D,11/30/10 0:00,64,M,Outside/Open Areas
+8252,269603,I,12/20/10 0:00,73,F,Vehicle/Towed Trailer
+8261,270591,I,12/18/10 0:00,78,F,Vehicle/Towed Trailer
+8262,270592,I,12/15/10 0:00,,,Vehicle/Towed Trailer
+8265,270813,I,12/11/10 0:00,19,M,Vehicle/Towed Trailer
+8286,270980,D,12/14/10 0:00,55,F,Permanent Home
+8332,271827,D,12/26/10 0:00,,F,Outside/Open Areas
+8271,271878,I,12/25/10 0:00,7,M,Outside/Open Areas
+8270,271922,I,12/26/10 0:00,6,M,Vehicle/Towed Trailer
+8272,271971,I,12/4/10 0:00,16,F,Vehicle/Towed Trailer
+8273,271972,I,12/4/10 0:00,16,F,Vehicle/Towed Trailer
+8274,271973,I,12/4/10 0:00,16,F,Vehicle/Towed Trailer
+8275,271976,I,12/4/10 0:00,16,F,Vehicle/Towed Trailer
+8276,271977,I,12/4/10 0:00,16,F,Vehicle/Towed Trailer
+8277,271979,I,12/4/10 0:00,16,F,Vehicle/Towed Trailer
+8278,272203,I,12/16/10 0:00,63,M,Vehicle/Towed Trailer
+8279,272204,D,12/16/10 0:00,50,M,Vehicle/Towed Trailer
+8280,272206,I,12/16/10 0:00,8,F,Vehicle/Towed Trailer
+8347,272448,I,12/12/10 0:00,69,M,Vehicle/Towed Trailer
+8281,272623,D,12/22/10 0:00,39,F,In Water
+8350,272848,I,12/25/10 0:00,20,F,Vehicle/Towed Trailer
+8284,272854,D,12/25/10 0:00,67,F,In Water
+8285,272866,D,12/29/10 0:00,,,Outside/Open Areas
+8288,273434,I,12/12/10 0:00,51,M,Vehicle/Towed Trailer
+8292,273594,I,12/15/10 0:00,44,M,Vehicle/Towed Trailer
+8295,273595,I,12/15/10 0:00,39,M,Vehicle/Towed Trailer
+8296,273595,I,12/15/10 0:00,41,M,Vehicle/Towed Trailer
+8297,273726,D,12/6/10 0:00,47,M,Outside/Open Areas
+8303,274007,D,12/4/10 0:00,45,F,Vehicle/Towed Trailer
+8353,274041,I,12/27/10 0:00,,M,Outside/Open Areas
+8313,274177,I,12/13/10 0:00,,M,Permanent Home
+8349,274485,D,12/13/10 0:00,73,F,Outside/Open Areas
+8331,274655,I,12/23/10 0:00,60,M,Vehicle/Towed Trailer
+8352,274657,D,12/1/10 0:00,62,M,Vehicle/Towed Trailer
+8337,275090,D,1/10/11 0:00,70,F,Vehicle/Towed Trailer
+8361,275515,I,12/11/10 0:00,21,F,Vehicle/Towed Trailer
+8355,275571,I,12/21/10 0:00,40,F,Vehicle/Towed Trailer
+8369,275777,D,12/28/10 0:00,70,F,Other
+8394,276532,I,12/15/10 0:00,29,F,Vehicle/Towed Trailer
+8381,276534,I,12/15/10 0:00,14,F,Vehicle/Towed Trailer
+8382,276534,I,12/15/10 0:00,15,F,Vehicle/Towed Trailer
+8425,277955,D,12/29/10 0:00,90,F,Permanent Home
+8912,297970,D,12/4/10 0:00,,,Outside/Open Areas
+11140,312533,D,12/28/10 0:00,80,M,Outside/Open Areas
