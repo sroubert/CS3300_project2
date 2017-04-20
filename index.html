@@ -87,9 +87,9 @@
         }
 
         button {
-            border: solid #585858 1px;
+            border: solid #585858 2px;
             color: #585858;
-            background-color: white;
+            background-color: #eeeeee;
             text-align: center;
             font-family: "LinotypeUniversW01-Cn";
             font-weight: 600;
@@ -164,7 +164,6 @@
         }
         
         #svg-map {
-            /*background-color: #42647F;*/
             padding-top: 10px;
         }
 
@@ -172,6 +171,11 @@
             text-align: center;
             margin-top: -10px;
         }
+
+        .bar {
+  fill: steelblue;
+}
+
     </style>
 
 
@@ -225,12 +229,12 @@
     <h4 style="font-size: 10pt; text-align: center; margin-top: -5px">Credits: Icons retrieved and modified from http://www.freepik.com and https://www.amcharts.com/free-animated-svg-weather-icons</h4>
     <div id="legend"></div>
 
-    <div style="margin-left: -25px; margin-top: -20px" class="svgs">
+    <div style="margin-left: -25px" class="svgs">
         <div id="map"><svg id="svg-map"></svg></div>
         <div id="map-details"></div>
     </div>
 
-    <h4 style="font-weight: bold; text-align: center; font-size: 20pt">Top Places You Can Die From A Weather Event</h4>
+    <!--<h4 style="font-weight: bold; text-align: center; font-size: 20pt">Top Places You Can Die From A Weather Event</h4>-->
 
     <script>
         function visualizeSingleDate() {
@@ -282,14 +286,17 @@
         var deats = {};
         var locations = {};
         var eventsNoCost = [];
+        var state_deats = [];
 
+        // Weather event type variables
         var floodEvents = ["Coastal Flood", "Flash Flood", "Flood", "High Surf", "Tsunami"];
         var hotEvents = ["Wildfire", "Drought", "Dust Storm", "Excessive Heat", "Heat"];
-        var snowEvents = ["Winter Storm", "Winter Weather", "Sleet", "Ice Storm", "Heavy Snow", "Blizzard", "Avalanche"];
+        var snowEvents = ["Winter Storm", "Winter Weather", "Sleet", "Ice Storm", "Heavy Snow", "Blizzard", "Avalanche", "Lake-Effect Snow"];
         var coldEvents = [ "Hail", "Frost/Freeze", "Extreme Cold/Wind Chill", "Cold/Wind Chill"];
-        var windEvents = ["High Wind", "Thunderstorm Wind", "Tornado"];
+        var windEvents = ["High Wind", "Thunderstorm Wind", "Tornado", "Strong Wind"];
         var hurricanes = ["Hurricane", "Typhoon", "Hurricane (Typhoon)", "Tropical Storm"];
 
+        // Weather icon type variables
         var water_icon = "icons/static/flood.png",
             fire_icon = "icons/static/heat.png",
             snow_icon = "icons/animated/snowy-6.svg",
@@ -301,14 +308,6 @@
 
         var parseRowDetails = function (row) {
             row.EVENT_ID = Number(row.EVENT_ID);
-            //row.DAMAGE_CROPS = convertToMonetaryVals(row.DAMAGE_CROPS);
-
-            // row.totalDamage = convertToMonetaryVals(row.DAMAGE_CROPS) +
-            //     convertToMonetaryVals(row.DAMAGE_PROPERTY);
-            // if (row.totalDamage === 0) {
-            //     eventsNoCost.push(row.EVENT_ID);
-            //     return;
-            // }
 
             //creating icon row
             if (floodEvents.includes(row.EVENT_TYPE)) {
@@ -327,49 +326,16 @@
                 row.icon = weather_icon;
             }
 
-
-            /*            var daysOfEvent = [];
-
-                        var beginDate = new Date(row.BEGIN_DATE_TIME).clearTime();
-                        var endDate = new Date(row.END_DATE_TIME).clearTime();
-
-                        var sameDate = -1;
-
-
-                        while (sameDate == -1) {
-                            daysOfEvent.push(beginDate);
-                            if (!beginDate.compare(endDate)) {
-                                sameDate = 0;
-                            }
-                            beginDate.add(1);
-                        }
-
-                        row.days = daysOfEvent;*/
-
             return row;
         }
 
         var parseRow = function (row) {
             row.EVENT_ID = Number(row.EVENT_ID);
-            //row.DAMAGE_CROPS = convertToMonetaryVals(row.DAMAGE_CROPS);
             row.LATITUDE = Number(row.LATITUDE);
             row.LONGITUDE = Number(row.LONGITUDE);
 
             return row;
         }
-
-        // Convert string money value into number
-        // function convertToMonetaryVals(string) {
-        //     if (string.includes("K")) {
-        //         string = string.replace("K", "");
-        //         return Number(string) * 1000;
-        //     } else if (string.includes("M")) {
-        //         string = string.replace("M", "");
-        //         return Number(string) * 1000000;
-        //     } else {
-        //         return string;
-        //     }
-        // }
 
         var details;
         var rawDeats = {};
@@ -388,6 +354,7 @@
 
             rawDetails.forEach(function (detail) {
                 deats[detail.EVENT_ID] = detail;
+                state_deats.push(detail);
             })
 
 
@@ -423,6 +390,7 @@
 
         });
 
+
         // Create map of USA
         var width = 800,
             height = 540;
@@ -431,67 +399,109 @@
         var lwidth = 1200,
             lheight = 100;
 
+        var flood = 0, heat = 0, snow = 0, cold = 0, wind = 0, hc = 0,
+            other = 0, max = 0;
+        var wmax = "";
         function createMap() {
-            //var projection = d3.geoAlbersUsa().scale(1080).translate([width / 2, height / 2]);
-            //var path = d3.geoPath().projection(projection);
-
             var svg = d3.select("#svg-map")
                 .attr("width", width)
                 .attr("height", height);
 
+            // Add states
             svg.append("g").attr("class", "states")
                 .selectAll("path")
                 .data(states).enter()
                 .append("path")
                 .style("fill", "#77DD77")
-                .attr("d", path);
+                .attr("d", path)
+                .on("click", function (d) { // Details when state is clicked
+                    dsvg.selectAll(".change").remove();
+                    flood = 0, heat = 0, snow = 0, cold = 0, wind = 0, hc = 0,
+                        other = 0;
+                    var state_name;
+                    state_deats.forEach(function (event) {
+                        if (event.STATE_FIPS == d.id) {
+                            state_name = event.STATE;
+                            if (floodEvents.includes(event.EVENT_TYPE)) {
+                                flood++;
+                            } else if (hotEvents.includes(event.EVENT_TYPE)) {
+                                heat++;
+                            } else if (snowEvents.includes(event.EVENT_TYPE)) {
+                                snow++;
+                            } else if (coldEvents.includes(event.EVENT_TYPE)) {
+                                cold++;
+                            } else if (windEvents.includes(event.EVENT_TYPE)) {
+                                wind++;
+                            } else if (hurricanes.includes(event.EVEMT_TYPE)) {
+                                hc++;
+                            } else {
+                                other++;
+                            }
+                        }
+                    });
+
+                    max = Math.max(flood, heat, snow, cold, wind, hc, other);
+                    if (max == flood) {
+                        wmax = "Flooding";
+                    } else if (max == heat) {
+                        wmax = "Heat-based/dry weather";
+                    } else if (max == snow) {
+                        wmax = "Snow";
+                    } else if (max == cold) {
+                        wmax = "CHill";
+                    } else if (max == wind) {
+                        wmax = "wind";
+                    } else if (max == hc) {
+                        wmax = "hurricane";
+                    } else {
+                        wmax = "Other";
+                    }
+                    console.log(state_name);
+                    var wvalues = [{"icon": water_icon, "value": flood}, {"icon": fire_icon, "value": heat}, {"icon": snow_icon, "value": snow}, {"icon": cold_icon, "value": cold}, {"icon": wind_icon, "value": wind}, {"icon": hurricane_icon, "value": hc}, {"icon": weather_icon, "value": other}];
+
+                    console.log(wvalues);
+
+                    dsvg.append("text")
+                        .attr("x", width*0.65*0.5).attr("y", 90)
+                        .text(state_name)
+                        .style("fill", "667f39")
+                        .style("font-size", "15pt")
+                        .style("font-weight", "bold")
+                        .style("text-anchor", "middle")
+                        .attr("class", "change");
+
+                    // Create weather type bar graph
+                    var x = d3.scaleBand().range([30, width-30]).padding(0.1);
+                    var y = d3.scaleLinear().range([200, 0]);
+
+                    x.domain(wvalues.map(function(d) { return d.icon; }));
+                    y.domain([0, d3.max(wvalues, function(d) { return d.value; })]);
+
+                    dsvg.selectAll(".bar")
+                        .data(wvalues).enter()
+                        .append("rect")
+                        .attr("class", "bar")
+                        .attr("x", function(d) { return x(d.icon); })
+                        .attr("y", function(d) { return y(d.value); })
 
 
-            //!!!!!!!!!!!!!! icons to map!!!!!!!!!!!//
-
-            ////////////////////////////////////////
-            //make sure this goes to function that is called upon user input
-            // svg.selectAll("image")
-            //     //going through location, note has to be array
-            //     .data(d3.values(locations).filter(function (event) {
-            //         console.log(event.EVENT_ID);
-            //         console.log(deats[event.EVENT_ID]);
-            //         var beginDay = new Date(deats[event.EVENT_ID].BEGIN_DATE_TIME).clearTime();
-
-            //         var endDay = new Date(deats[event.EVENT_ID].END_DATE_TIME).clearTime();
-
-
-            //         //
-            //         var userDate = new Date("08/08/2016");
-
-
-
-            //         //only filters if returns true
-            //         return userDate.between(beginDay, endDay);
-
-            //         //how you would refer to fatatilies
-            //         //fatal(event.EVENT_ID)...
-
-            //     })).enter()
-            //     .append("image")
-            //     .attr("x", function (event) {
-
-            //         return projection([event.LATITUDE, event.LONGITUDE].reverse())[0] - 17;
-            //     })
-            //     .attr("y", function (event) {
-            //         return projection([event.LATITUDE, event.LONGITUDE].reverse())[1] - 17;
-            //     })
-            //     .attr("xlink:href", function (event) {
-
-            //         return deats[event.EVENT_ID].icon;
-            //     })
+                });
 
         };
 
 
+        // Details svg
         var dsvg = d3.select("#map-details").append("svg")
             .attr("width", width * 0.65)
             .attr("height", height);
+        dsvg.append("text")
+            .attr("x", width*0.65*0.5).attr("y", 50)
+            .text("CLICK ON A STATE TO VIEW DETAILS")
+            .style("font-size", "30px")
+            .style("font-weight", "500")
+            .style("text-anchor", "middle")
+            .style("text-decoration", "underline");
+
 
         // Create map legend
         var lsvg = d3.select("#legend").append("svg")
