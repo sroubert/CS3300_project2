@@ -80,12 +80,12 @@
         div.circleText {
             padding-top: 3px;
         }
-
+        
         input {
             padding: 3px;
             font-size: 12pt;
         }
-
+        
         button {
             border: solid #585858 2px;
             color: #585858;
@@ -99,7 +99,7 @@
             padding-left: 15px;
             padding-right: 15px;
         }
-
+        
         button:hover {
             background-color: #848484;
             color: white;
@@ -152,7 +152,7 @@
             float: left;
             height: auto;
         }
-
+        
         image {
             border: solid red 1px;
         }
@@ -166,16 +166,15 @@
         #svg-map {
             padding-top: 10px;
         }
-
+        
         #legend {
             text-align: center;
             margin-top: -10px;
         }
-
+        
         .bar {
-  fill: steelblue;
-}
-
+            fill: steelblue;
+        }
     </style>
 
 
@@ -225,18 +224,20 @@
             <button type="button" onclick="visualizeFastForward()">Visualize</button>
         </div>
     </div>
-    
+
     <h4 style="font-size: 10pt; text-align: center; margin-top: -5px">Credits: Icons retrieved and modified from http://www.freepik.com and https://www.amcharts.com/free-animated-svg-weather-icons</h4>
     <div id="legend"></div>
 
     <div style="margin-left: -25px" class="svgs">
-        <div id="map"><svg id="svg-map"></svg></div>
+        <div id="map">
+            <svg id="svg-map"></svg>
+        </div>
         <div id="map-details"></div>
     </div>
 
     <script>
         function visualizeSingleDate() {
-            var rawDate= document.getElementById('date').value;
+            var rawDate = document.getElementById('date').value;
             var userViewDate = new Date(rawDate.replace("-", "/"));
 
             var svg = d3.select("#svg-map");
@@ -268,7 +269,7 @@
                 })
 
         }
-                
+
         function visualizeFastForward() {
             var currentStartDate = document.getElementById('startDate').value;
             var currentEndDateVal = document.getElementById('endDate').value;
@@ -291,7 +292,7 @@
         var floodEvents = ["Coastal Flood", "Flash Flood", "Flood", "High Surf", "Tsunami"];
         var hotEvents = ["Wildfire", "Drought", "Dust Storm", "Excessive Heat", "Heat"];
         var snowEvents = ["Winter Storm", "Winter Weather", "Sleet", "Ice Storm", "Heavy Snow", "Blizzard", "Avalanche", "Lake-Effect Snow"];
-        var coldEvents = [ "Hail", "Frost/Freeze", "Extreme Cold/Wind Chill", "Cold/Wind Chill"];
+        var coldEvents = ["Hail", "Frost/Freeze", "Extreme Cold/Wind Chill", "Cold/Wind Chill"];
         var windEvents = ["High Wind", "Thunderstorm Wind", "Tornado", "Strong Wind"];
         var hurricanes = ["Hurricane", "Typhoon", "Hurricane (Typhoon)", "Tropical Storm", "Waterspout"];
 
@@ -336,8 +337,14 @@
             return row;
         }
 
+        var parseRowState = function (row) {
+            row.GDP = Number(row.GDP);
+            return row;
+        }
+
         var details;
         var rawDeats = {};
+        var stateDeats;
 
 
         // Load data from json and csv files
@@ -348,9 +355,11 @@
             .defer(d3.csv, "csv/StormEvents_locations-ftp_v1.0_d2016_c20170317.csv", parseRow)
             .defer(d3.csv, "csv/2016MajorDamageOnly.csv", parseRowDetails)
             .defer(d3.csv, "csv/Fatalities/2016Fatalities.csv", parseRowDetails)
+            .defer(d3.csv, "csv/state2015GDP.csv", parseRowState)
 
-        .await(function (error, rawMap, rawDetails, conDetails, rawLocations, rawDamage, rawFatality) {
+        .await(function (error, rawMap, rawDetails, conDetails, rawLocations, rawDamage, rawFatality, rawStateGDP) {
 
+            stateDeats = rawStateGDP;
             rawDeats = rawDetails;
             states = (topojson.feature(rawMap, rawMap.objects.states)).features;
 
@@ -410,9 +419,18 @@
         var lwidth = 1200,
             lheight = 100;
 
-        var flood = 0, heat = 0, snow = 0, cold = 0, wind = 0, hc = 0,
-            other = 0, max = 0, damage = 0, fatal = 0;
+        var flood = 0,
+            heat = 0,
+            snow = 0,
+            cold = 0,
+            wind = 0,
+            hc = 0,
+            other = 0,
+            max = 0,
+            damage = 0,
+            fatal = 0;
         var wmax = "";
+
         function createMap() {
             var svg = d3.select("#svg-map")
                 .attr("width", width)
@@ -488,10 +506,31 @@
                         wmax = "Other";
                     }*/
 
-                    var wvalues = [{"icon": "", "value": flood}, {"icon": " ", "value": heat}, {"icon": "  ", "value": snow}, {"icon": "   ", "value": cold}, {"icon": "    ", "value": wind}, {"icon": "     ", "value": hc}, {"icon": "      ", "value": other}];
+                    var wvalues = [{
+                        "icon": "",
+                        "value": flood
+                    }, {
+                        "icon": " ",
+                        "value": heat
+                    }, {
+                        "icon": "  ",
+                        "value": snow
+                    }, {
+                        "icon": "   ",
+                        "value": cold
+                    }, {
+                        "icon": "    ",
+                        "value": wind
+                    }, {
+                        "icon": "     ",
+                        "value": hc
+                    }, {
+                        "icon": "      ",
+                        "value": other
+                    }];
 
                     dsvg.append("text")
-                        .attr("x", width*0.65*0.5).attr("y", 40)
+                        .attr("x", width * 0.65 * 0.5).attr("y", 40)
                         .text(state_name)
                         .style("fill", "#667f39")
                         .style("font-size", "20pt")
@@ -500,25 +539,35 @@
                         .attr("class", "change");
 
                     // Create weather type bar graph
-                    var x = d3.scaleBand().range([50, width*0.65-30]).padding(0.1);
+                    var x = d3.scaleBand().range([50, width * 0.65 - 30]).padding(0.1);
                     var y = d3.scaleLinear().range([150, 0]);
 
-                    x.domain(wvalues.map(function(d) { return d.icon; }));
-                    y.domain([0, d3.max(wvalues, function(d) { return d.value; })]);
+                    x.domain(wvalues.map(function (d) {
+                        return d.icon;
+                    }));
+                    y.domain([0, d3.max(wvalues, function (d) {
+                        return d.value;
+                    })]);
 
                     dsvg.selectAll(".bar")
                         .data(wvalues).enter()
                         .append("rect")
                         .attr("class", "bar")
-                        .attr("x", function(d) { return x(d.icon); })
-                        .attr("y", function(d) { return y(d.value)+70; })
+                        .attr("x", function (d) {
+                            return x(d.icon);
+                        })
+                        .attr("y", function (d) {
+                            return y(d.value) + 70;
+                        })
                         .attr("width", x.bandwidth())
-                        .attr("height", function(d) { return 150-y(d.value); });
+                        .attr("height", function (d) {
+                            return 150 - y(d.value);
+                        });
                     // X-axis icon labels
                     for (var i = 1; i < 8; i++) {
                         dsvg.append("image")
-                            .attr("xlink:href", icon_lst[i-1])
-                            .attr("x", (62*i)-10)
+                            .attr("xlink:href", icon_lst[i - 1])
+                            .attr("x", (62 * i) - 10)
                             .attr("y", 218);
                     }
 
@@ -562,7 +611,7 @@
             .attr("width", width * 0.65)
             .attr("height", height);
         dsvg.append("text")
-            .attr("x", width*0.65*0.5).attr("y", 50)
+            .attr("x", width * 0.65 * 0.5).attr("y", 50)
             .text("CLICK ON STATE FOR YEAR OVERVIEW")
             .style("font-size", "30px")
             .style("font-weight", "500")
@@ -577,63 +626,62 @@
         var icon_lst = [water_icon, fire_icon, snow_icon, cold_icon, wind_icon, hurricane_icon, weather_icon];
         for (var i = 0; i < 7; i++) {
             lsvg.append("image")
-                .attr("x", (i*170)+70)
+                .attr("x", (i * 170) + 70)
                 .attr("y", 0)
                 .attr("xlink:href", icon_lst[i])
                 .attr("class", "i");
 
             if (icon_lst[i] == water_icon) {
                 lsvg.append("text")
-                    .attr("x", (i*170)+50).attr("y", 70)
+                    .attr("x", (i * 170) + 50).attr("y", 70)
                     .text("Extreme Flooding");
                 lsvg.append("text")
-                    .attr("x", (i*170)+45).attr("y", 90)
+                    .attr("x", (i * 170) + 45).attr("y", 90)
                     .text("(ex. floods, tsunami)");
             } else if (icon_lst[i] == fire_icon) {
                 lsvg.append("text")
-                    .attr("x", (i*170)+60).attr("y", 70)
+                    .attr("x", (i * 170) + 60).attr("y", 70)
                     .text("Blazing Heat");
                 lsvg.append("text")
-                    .attr("x", (i*170)+30).attr("y", 90)
+                    .attr("x", (i * 170) + 30).attr("y", 90)
                     .text("(ex. wildfire, drought)");
             } else if (icon_lst[i] == snow_icon) {
                 lsvg.append("text")
-                    .attr("x", (i*170)+45).attr("y", 70)
+                    .attr("x", (i * 170) + 45).attr("y", 70)
                     .text("Snow Catastrophes");
                 lsvg.append("text")
-                    .attr("x", (i*170)+30).attr("y", 90)
+                    .attr("x", (i * 170) + 30).attr("y", 90)
                     .text("(ex. blizzard, avalanche)");
             } else if (icon_lst[i] == cold_icon) {
                 lsvg.append("text")
-                    .attr("x", (i*170)+65).attr("y", 70)
+                    .attr("x", (i * 170) + 65).attr("y", 70)
                     .text("Deep Freeze");
                 lsvg.append("text")
-                    .attr("x", (i*170)+60).attr("y", 90)
+                    .attr("x", (i * 170) + 60).attr("y", 90)
                     .text("(ex. hail, frost)");
             } else if (icon_lst[i] == wind_icon) {
                 lsvg.append("text")
-                    .attr("x", (i*170)+65).attr("y", 70)
+                    .attr("x", (i * 170) + 65).attr("y", 70)
                     .text("Stormy Winds");
                 lsvg.append("text")
-                    .attr("x", (i*170)+30).attr("y", 90)
+                    .attr("x", (i * 170) + 30).attr("y", 90)
                     .text("(ex. tornado, storm winds)");
             } else if (icon_lst[i] == hurricane_icon) {
                 lsvg.append("text")
-                    .attr("x", (i*170)+60).attr("y", 70)
+                    .attr("x", (i * 170) + 60).attr("y", 70)
                     .text("Coastal Calamity");
                 lsvg.append("text")
-                    .attr("x", (i*170)+35).attr("y", 90)
+                    .attr("x", (i * 170) + 35).attr("y", 90)
                     .text("(ex. hurricane, typhoon)");
             } else if (icon_lst[i] == weather_icon) {
                 lsvg.append("text")
-                    .attr("x", (i*170)+60).attr("y", 70)
+                    .attr("x", (i * 170) + 60).attr("y", 70)
                     .text("Miscellaneous");
                 lsvg.append("text")
-                    .attr("x", (i*170)+63).attr("y", 90)
+                    .attr("x", (i * 170) + 63).attr("y", 90)
                     .text("(ex. lightning)");
             }
         }
-
     </script>
 
 </body>
