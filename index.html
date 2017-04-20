@@ -357,19 +357,20 @@
             .defer(d3.csv, "csv/Fatalities/2016Fatalities.csv", parseRowDetails)
             .defer(d3.csv, "csv/state2015GDP.csv", parseRowState)
 
-        .await(function (error, rawMap, rawDetails, conDetails, rawLocations, rawDamage, rawFatality, rawStateGDP) {
+        .await(function (error, rawMap, conDetails, rawDetails, rawLocations, rawDamage, rawFatality, rawStateGDP) {
 
             stateDeats = rawStateGDP;
             rawDeats = rawDetails;
             states = (topojson.feature(rawMap, rawMap.objects.states)).features;
 
             rawDetails.forEach(function (detail) {
-                deats[detail.EVENT_ID] = detail;
-                sd_deats.push(detail);
+                state_deats.push(detail);
+
             })
 
             conDetails.forEach(function (cdetail) {
-                state_deats.push(cdetail);
+                deats[cdetail.EVENT_ID] = cdetail;
+                sd_deats.push(cdetail);
             })
 
             rawDamage.forEach(function (damage) {
@@ -487,7 +488,7 @@
 
                     console.log(state_name);
                     console.log(fatal);
-                    console.log(hc);
+                    console.log(damage);
 
                     /*max = Math.max(flood, heat, snow, cold, wind, hc, other);
                     if (max == flood) {
