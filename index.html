@@ -221,7 +221,7 @@
             <button type="button" onclick="visualizeFastForward()">Visualize</button>
         </div>
     </div>
-
+    
     <h4 style="font-size: 10pt; text-align: center; margin-top: -5px">Credits: Icons retrieved and modified from http://www.freepik.com and https://www.amcharts.com/free-animated-svg-weather-icons</h4>
     <div id="legend"></div>
 
@@ -243,10 +243,11 @@
             svg.selectAll("image")
                 //going through location, note has to be array
                 .data(d3.values(locations).filter(function (event) {
+                    //console.log(event.EVENT_ID);
+                    //console.log(deats[event.EVENT_ID]);
+                    var beginDay = new Date(deats[event.EVENT_ID].BEGIN_DATE_TIME).clearTime();
 
-                    var beginDay = new Date(details[event.EVENT_ID].BEGIN_DATE_TIME).clearTime();
-
-                    var endDay = new Date(details[event.EVENT_ID].END_DATE_TIME).clearTime();
+                    var endDay = new Date(deats[event.EVENT_ID].END_DATE_TIME).clearTime();
 
                     //only filters if returns true
                     return userViewDate.between(beginDay, endDay);
@@ -286,8 +287,8 @@
         var hotEvents = ["Wildfire", "Drought", "Dust Storm", "Excessive Heat", "Heat"];
         var snowEvents = ["Winter Storm", "Winter Weather", "Sleet", "Ice Storm", "Heavy Snow", "Blizzard", "Avalanche"];
         var coldEvents = [ "Hail", "Frost/Freeze", "Extreme Cold/Wind Chill", "Cold/Wind Chill"];
-        var windEvents = ["High Wind", "Thunderstorm Wind", "Tornado", "Funnel Cloud"];
-        var hurricanes = ["Hurricane", "Typhoon", "Hurricane (Typhoon)", "Tropical Storm", "Waterspout"];
+        var windEvents = ["High Wind", "Thunderstorm Wind", "Tornado"];
+        var hurricanes = ["Hurricane", "Typhoon", "Hurricane (Typhoon)", "Tropical Storm"];
 
         var water_icon = "icons/static/flood.png",
             fire_icon = "icons/static/heat.png",
@@ -302,12 +303,12 @@
             row.EVENT_ID = Number(row.EVENT_ID);
             //row.DAMAGE_CROPS = convertToMonetaryVals(row.DAMAGE_CROPS);
 
-            row.totalDamage = convertToMonetaryVals(row.DAMAGE_CROPS) +
-                convertToMonetaryVals(row.DAMAGE_PROPERTY);
-            if (row.totalDamage === 0) {
-                eventsNoCost.push(row.EVENT_ID);
-                return;
-            }
+            // row.totalDamage = convertToMonetaryVals(row.DAMAGE_CROPS) +
+            //     convertToMonetaryVals(row.DAMAGE_PROPERTY);
+            // if (row.totalDamage === 0) {
+            //     eventsNoCost.push(row.EVENT_ID);
+            //     return;
+            // }
 
             //creating icon row
             if (floodEvents.includes(row.EVENT_TYPE)) {
@@ -358,27 +359,26 @@
         }
 
         // Convert string money value into number
-        function convertToMonetaryVals(string) {
-            if (string.includes("K")) {
-                string = string.replace("K", "");
-                return Number(string) * 1000;
-            } else if (string.includes("M")) {
-                string = string.replace("M", "");
-                return Number(string) * 1000000;
-            } else {
-                return string;
-            }
-        }
+        // function convertToMonetaryVals(string) {
+        //     if (string.includes("K")) {
+        //         string = string.replace("K", "");
+        //         return Number(string) * 1000;
+        //     } else if (string.includes("M")) {
+        //         string = string.replace("M", "");
+        //         return Number(string) * 1000000;
+        //     } else {
+        //         return string;
+        //     }
+        // }
 
         var details;
-        var eventTypes = [];
         var rawDeats = {};
 
 
         // Load data from json and csv files
         d3.queue()
             .defer(d3.json, "json/us.json")
-            .defer(d3.csv, "csv/StormEvents_details_d2016_steamlined_first.csv", parseRowDetails)
+            .defer(d3.csv, "csv/ProcessedCSV/2016Condensed.csv", parseRowDetails)
             .defer(d3.csv, "csv/StormEvents_locations-ftp_v1.0_d2016_c20170317.csv", parseRow)
 
         .await(function (error, rawMap, rawDetails, rawLocations) {
@@ -393,7 +393,11 @@
 
 
             rawLocations.forEach(function (location) {
-                locations[location.EVENT_ID] = location;
+                if (deats.hasOwnProperty(location.EVENT_ID)) {
+                    locations[location.EVENT_ID] = location;
+                }
+
+                
             })
 
             //deleting events from location array that have zero cost associated with them
@@ -406,14 +410,7 @@
             createMap();
             details = deats;
 
-            d3.values(deats).forEach(function (event) {
-                    if (!eventTypes.includes(event.EVENT_TYPE)) {
-                        eventTypes.push(event.EVENT_TYPE);
-                    }
-                }
 
-
-            );
         });
 
         d3.values(locations).forEach(function (event) {
@@ -431,10 +428,13 @@
             height = 540;
         var projection = d3.geoAlbersUsa().scale(1080).translate([width / 2, height / 2]);
         var path = d3.geoPath().projection(projection);
-        var lwidth = 1200,
-            lheight = 100;
+        var lwidth = 800,
+            lheight = 150;
 
         function createMap() {
+            //var projection = d3.geoAlbersUsa().scale(1080).translate([width / 2, height / 2]);
+            //var path = d3.geoPath().projection(projection);
+
             var svg = d3.select("#svg-map")
                 .attr("width", width)
                 .attr("height", height);
@@ -451,39 +451,40 @@
 
             ////////////////////////////////////////
             //make sure this goes to function that is called upon user input
-            /*svg.selectAll("image")
-                //going through location, note has to be array
-                .data(d3.values(locations).filter(function (event) {
+            // svg.selectAll("image")
+            //     //going through location, note has to be array
+            //     .data(d3.values(locations).filter(function (event) {
+            //         console.log(event.EVENT_ID);
+            //         console.log(deats[event.EVENT_ID]);
+            //         var beginDay = new Date(deats[event.EVENT_ID].BEGIN_DATE_TIME).clearTime();
 
-                    var beginDay = new Date(deats[event.EVENT_ID].BEGIN_DATE_TIME).clearTime();
-
-                    var endDay = new Date(deats[event.EVENT_ID].END_DATE_TIME).clearTime();
-
-
-                    //
-                    var userDate = new Date("12/25/2016");
+            //         var endDay = new Date(deats[event.EVENT_ID].END_DATE_TIME).clearTime();
 
 
+            //         //
+            //         var userDate = new Date("08/08/2016");
 
-                    //only filters if returns true
-                    return userDate.between(beginDay, endDay);
 
-                    //how you would refer to fatatilies
-                    //fatal(event.EVENT_ID)...
 
-                })).enter()
-                .append("image")
-                .attr("x", function (event) {
+            //         //only filters if returns true
+            //         return userDate.between(beginDay, endDay);
 
-                    return projection([event.LATITUDE, event.LONGITUDE].reverse())[0] - 17;
-                })
-                .attr("y", function (event) {
-                    return projection([event.LATITUDE, event.LONGITUDE].reverse())[1] - 17;
-                })
-                .attr("xlink:href", function (event) {
+            //         //how you would refer to fatatilies
+            //         //fatal(event.EVENT_ID)...
 
-                    return deats[event.EVENT_ID].icon;
-                })*/
+            //     })).enter()
+            //     .append("image")
+            //     .attr("x", function (event) {
+
+            //         return projection([event.LATITUDE, event.LONGITUDE].reverse())[0] - 17;
+            //     })
+            //     .attr("y", function (event) {
+            //         return projection([event.LATITUDE, event.LONGITUDE].reverse())[1] - 17;
+            //     })
+            //     .attr("xlink:href", function (event) {
+
+            //         return deats[event.EVENT_ID].icon;
+            //     })
 
         };
 
