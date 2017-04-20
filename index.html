@@ -521,6 +521,7 @@
                             .attr("y", 218);
                     }
 
+                    // bar graph axes
                     dsvg.append("g")
                         .attr("transform", "translate(0, 220)")
                         .call(d3.axisBottom(x))
@@ -547,7 +548,7 @@
                         .style('fill-opacity', 1);
                 })
                 .on('mouseout', function (d) {
-                    d3.selectAll('path')
+                    d3.select("#svg-map").selectAll('path')
                         .style("fill", "#77DD77")
                         .style('fill-opacity', 0.8);
                 });
