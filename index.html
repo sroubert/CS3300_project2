@@ -293,7 +293,7 @@
         var snowEvents = ["Winter Storm", "Winter Weather", "Sleet", "Ice Storm", "Heavy Snow", "Blizzard", "Avalanche", "Lake-Effect Snow"];
         var coldEvents = [ "Hail", "Frost/Freeze", "Extreme Cold/Wind Chill", "Cold/Wind Chill"];
         var windEvents = ["High Wind", "Thunderstorm Wind", "Tornado", "Strong Wind"];
-        var hurricanes = ["Hurricane", "Typhoon", "Hurricane (Typhoon)", "Tropical Storm"];
+        var hurricanes = ["Hurricane", "Typhoon", "Hurricane (Typhoon)", "Tropical Storm", "Waterspout"];
 
         // Weather icon type variables
         var water_icon = "icons/static/flood.png",
@@ -469,6 +469,7 @@
 
                     console.log(state_name);
                     console.log(fatal);
+                    console.log(hc);
 
                     /*max = Math.max(flood, heat, snow, cold, wind, hc, other);
                     if (max == flood) {
@@ -521,6 +522,7 @@
                             .attr("y", 218);
                     }
 
+                    // bar graph axes
                     dsvg.append("g")
                         .attr("transform", "translate(0, 220)")
                         .call(d3.axisBottom(x))
@@ -540,12 +542,16 @@
                         .style("font-weight", "bold")
                         .attr("class", "change");
                 })
-                .on('mouseover', function (d) { // Map hover effect
-                    var currentState = this;
-                    d3.select(this).style('fill-opacity', 1);
+                .on('mouseout', function (d) { // Map hover effect: mouse not on state
+                    d3.select("#svg-map").selectAll('path')
+                        .style("stroke", "white")
+                        .style("stroke-width", "1");
                 })
-                .on('mouseout', function (d) {
-                    d3.selectAll('path').style('fill-opacity', 0.8);
+                .on('mouseover', function (d) { // Map hover effect: mouse on state
+                    var currentState = this;
+                    d3.select(this)
+                        .style("stroke", "white")
+                        .style("stroke-width", "3.5")
                 });
 
         };
