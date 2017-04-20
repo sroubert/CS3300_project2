@@ -82,27 +82,27 @@
         }
 
         input {
-        	padding: 3px;
-        	font-size: 12pt;
+            padding: 3px;
+            font-size: 12pt;
         }
 
         button {
-        	border: solid #585858 1px;
-        	color: #585858;
-        	background-color: white;
-        	text-align: center;
-        	font-family: "LinotypeUniversW01-Cn";
-        	font-weight: 600;
-        	font-size: 15pt;
-        	padding: 5px;
-        	margin-left: 30px;
-        	padding-left: 15px;
-        	padding-right: 15px;
+            border: solid #585858 1px;
+            color: #585858;
+            background-color: white;
+            text-align: center;
+            font-family: "LinotypeUniversW01-Cn";
+            font-weight: 600;
+            font-size: 15pt;
+            padding: 5px;
+            margin-left: 30px;
+            padding-left: 15px;
+            padding-right: 15px;
         }
 
         button:hover {
-        	background-color: #848484;
-        	color: white;
+            background-color: #848484;
+            color: white;
         }
         
         #label {
@@ -154,7 +154,7 @@
         }
 
         image {
-        	border: solid red 1px;
+            border: solid red 1px;
         }
         
         .states {
@@ -169,8 +169,8 @@
         }
 
         #legend {
-        	text-align: center;
-        	margin-top: -10px;
+            text-align: center;
+            margin-top: -10px;
         }
     </style>
 
@@ -221,7 +221,7 @@
             <button type="button" onclick="visualizeFastForward()">Visualize</button>
         </div>
     </div>
-    
+
     <div id="legend"></div>
 
     <div style="margin-left: -25px; margin-top: -20px" class="svgs">
@@ -285,8 +285,8 @@
         var hotEvents = ["Wildfire", "Drought", "Dust Storm", "Excessive Heat", "Heat"];
         var snowEvents = ["Winter Storm", "Winter Weather", "Sleet", "Ice Storm", "Heavy Snow", "Blizzard", "Avalanche"];
         var coldEvents = [ "Hail", "Frost/Freeze", "Extreme Cold/Wind Chill", "Cold/Wind Chill"];
-        var windEvents = ["High Wind", "Thunderstorm Wind", "Tornado"];
-        var hurricanes = ["Hurricane", "Typhoon", "Hurricane (Typhoon)", "Tropical Storm"];
+        var windEvents = ["High Wind", "Thunderstorm Wind", "Tornado", "Funnel Cloud"];
+        var hurricanes = ["Hurricane", "Typhoon", "Hurricane (Typhoon)", "Tropical Storm", "Waterspout"];
 
         var water_icon = "icons/static/flood.png",
             fire_icon = "icons/static/heat.png",
@@ -316,7 +316,7 @@
             } else if (snowEvents.includes(row.EVENT_TYPE)) {
                 row.icon = snow_icon;
             } else if (coldEvents.includes(row.EVENT_TYPE)) {
-            	row.icon = cold_icon;
+                row.icon = cold_icon;
             } else if (windEvents.includes(row.EVENT_TYPE)) {
                 row.icon = wind_icon;
             } else if (hurricanes.includes(row.EVEMT_TYPE)) {
@@ -430,13 +430,10 @@
             height = 540;
         var projection = d3.geoAlbersUsa().scale(1080).translate([width / 2, height / 2]);
         var path = d3.geoPath().projection(projection);
-        var lwidth = 800,
-            lheight = 150;
+        var lwidth = 1200,
+            lheight = 100;
 
         function createMap() {
-            //var projection = d3.geoAlbersUsa().scale(1080).translate([width / 2, height / 2]);
-            //var path = d3.geoPath().projection(projection);
-
             var svg = d3.select("#svg-map")
                 .attr("width", width)
                 .attr("height", height);
@@ -494,24 +491,68 @@
             .attr("width", width * 0.65)
             .attr("height", height);
 
+        // Create map legend
         var lsvg = d3.select("#legend").append("svg")
             .attr("width", lwidth)
             .attr("height", lheight);
-
         var icon_lst = [water_icon, fire_icon, snow_icon, cold_icon, wind_icon, hurricane_icon, weather_icon];
         for (var i = 0; i < 7; i++) {
-        	lsvg.append("image")
-        	    .attr("x", (i*110)+30)
-        	    .attr("y", 0)
-        	    .attr("xlink:href", icon_lst[i])
-        	    .attr("class", "i");
+            lsvg.append("image")
+                .attr("x", (i*170)+70)
+                .attr("y", 0)
+                .attr("xlink:href", icon_lst[i])
+                .attr("class", "i");
 
-        	if (icon_lst[i] == water_icon) {
-        		lsvg.append("text")
-        		    .attr("x", (i*120)+50).attr("y", 100)
-        		    .text("Flooding type events")
-        		    .attr("")
-        	}
+            if (icon_lst[i] == water_icon) {
+                lsvg.append("text")
+                    .attr("x", (i*170)+50).attr("y", 70)
+                    .text("Extreme Flooding");
+                lsvg.append("text")
+                    .attr("x", (i*170)+45).attr("y", 90)
+                    .text("(ex. floods, tsunami)");
+            } else if (icon_lst[i] == fire_icon) {
+                lsvg.append("text")
+                    .attr("x", (i*170)+60).attr("y", 70)
+                    .text("Blazing Heat");
+                lsvg.append("text")
+                    .attr("x", (i*170)+30).attr("y", 90)
+                    .text("(ex. wildfire, drought)");
+            } else if (icon_lst[i] == snow_icon) {
+                lsvg.append("text")
+                    .attr("x", (i*170)+45).attr("y", 70)
+                    .text("Snow Catastrophes");
+                lsvg.append("text")
+                    .attr("x", (i*170)+30).attr("y", 90)
+                    .text("(ex. blizzard, avalanche)");
+            } else if (icon_lst[i] == cold_icon) {
+                lsvg.append("text")
+                    .attr("x", (i*170)+65).attr("y", 70)
+                    .text("Deep Freeze");
+                lsvg.append("text")
+                    .attr("x", (i*170)+60).attr("y", 90)
+                    .text("(ex. hail, frost)");
+            } else if (icon_lst[i] == wind_icon) {
+                lsvg.append("text")
+                    .attr("x", (i*170)+65).attr("y", 70)
+                    .text("Stormy Winds");
+                lsvg.append("text")
+                    .attr("x", (i*170)+30).attr("y", 90)
+                    .text("(ex. tornado, storm winds)");
+            } else if (icon_lst[i] == hurricane_icon) {
+                lsvg.append("text")
+                    .attr("x", (i*170)+60).attr("y", 70)
+                    .text("Coastal Calamity");
+                lsvg.append("text")
+                    .attr("x", (i*170)+35).attr("y", 90)
+                    .text("(ex. hurricane, typhoon)");
+            } else if (icon_lst[i] == weather_icon) {
+                lsvg.append("text")
+                    .attr("x", (i*170)+60).attr("y", 70)
+                    .text("Miscellaneous");
+                lsvg.append("text")
+                    .attr("x", (i*170)+63).attr("y", 90)
+                    .text("(ex. lightning)");
+            }
         }
 
     </script>
