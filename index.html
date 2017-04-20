@@ -364,7 +364,7 @@
             .defer(d3.csv, "csv/state2015GDP.csv", parseRowStateGDP)
             .defer(d3.csv, "csv/2015populationData.csv", parseRowPop)
 
-        .await(function (error, rawMap, conDetails, rawDetails, rawLocations, rawDamage, rawFatality, rawStateGDP) {
+        .await(function (error, rawMap, conDetails, rawDetails, rawLocations, rawDamage, rawFatality, rawStateGDP, rawStatePop) {
 
             stateDeats = rawStateGDP;
 
