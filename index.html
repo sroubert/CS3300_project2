@@ -406,6 +406,9 @@
         var fatalNormByPopDomain = [];
         var damNormByGdpDomain = [];
 
+        var statePathsArray = [];
+        var statePaths;
+
         var colorsRange = ["#19FF35", "#BDE80E", "#FFCE1C", "#E8750E", "#FF2A19"];
 
         // Load data from json and csv files
@@ -545,20 +548,24 @@
             damNormByGdp.sort(sortNumber);
             fatalNormByPop.sort(sortNumber);
 
-            damNormByGdpDomain = d3.extent(damNormByGdp, function (d) {
-                return Math.log(+d.damageNormByGdp);
-            });
-            fatalNormByPopDomain = d3.extent(fatalNormByPop, function (d) {
-                return Math.log(+d.fatalNormByPop)
-            });
+            /*            damNormByGdpDomain = d3.extent(damNormByGdp, function (d) {
+                            return Math.log(+d.damageNormByGdp);
+                        });
+                        fatalNormByPopDomain = d3.extent(fatalNormByPop, function (d) {
+                            console.log(d.fatalNormByPop);
+                            return Math.log(+d.fatalNormByPop)
+                        });*/
 
             //createButtom();
             createMap();
             details = deats;
 
-            stateDeats.forEach(function (d) {
+            statePaths = document.getElementsByTagName("path");
 
-            })
+            statePathsArray = d3.values(statePaths);
+
+
+
 
 
         });
@@ -569,31 +576,50 @@
         document.body.appendChild(fatalButton);
 
 
-        var statePathsArray = [];
-        var statePaths = document.getElementsByTagName("path");
-        console.log(statePaths.length);
+        //var statePathsArray = [];
+        // var statePaths = document.getElementsByTagName("path");
+        //console.log(statePaths);
+        //console.log(statePaths.length);
+        //console.log(d3.values(statePaths))
 
         var fatalScale = d3.scaleQuantize()
-            .domain(fatalNormByPopDomain)
+            .domain([Math.log(d3.min(fatalNormByPop)), Math.log(d3.max(fatalNormByPop))])
             .range(colorsRange);
 
-        /*
-                fatalButton.onclick = function () {
+
+        fatalButton.onclick = function () {
 
 
-                    statePathsArray.forEach(function (path) {
+            statePathsArray.forEach(function (path) {
 
-                        var index;
+                var found = false;
 
-                        index = stateDeats.findIndex(function (d) {
-                            return path.id = d.FIPS;
-                        })
+                stateDeats.forEach(function (state) {
+                    if (state.FIPS == path.id) {
+                        found = true;
+                    }
 
-                        path.style.fill = fatalScale(Math.log(stateDeats[index].fatalNormByPop));
+                })
 
-                    });
+                if (found) {
 
-                }*/
+                    var index;
+
+                    index = stateDeats.findIndex(function (d) {
+                        return path.id = d.FIPS;
+                    })
+
+                    path.style.fill = fatalScale(Math.log(stateDeats[index].fatalNormByPop));
+                    console.log(fatalScale(Math.log(stateDeats[index].fatalNormByPop)))
+                }
+
+            });
+
+        }
+
+        var damageScale = d3.scaleQuantize()
+            .domain([d3.min(damNormByGdp), d3.max(damNormByGdp)])
+            .range(colorsRange);
 
         var damageButton = document.createElement("BUTTON"); // Create a <button> element
         var t = document.createTextNode("Map View With Damage Per State Normalized by State GDP"); // Create a text node
@@ -601,6 +627,39 @@
         document.body.appendChild(damageButton);
 
 
+        damageButton.onclick = function () {
+
+
+            statePathsArray.forEach(function (path) {
+
+                var found = false;
+
+                stateDeats.forEach(function (state) {
+                    if (state.FIPS == path.id) {
+                        found = true;
+                    }
+
+                })
+
+                if (found) {
+
+                    var index;
+
+                    index = stateDeats.findIndex(function (d, i) {
+                        return path.id === d.FIPS;
+                    })
+
+                    console.log(index);
+
+                    console.log(stateDeats[index].damageNormByGdp);
+                    path.style.fill = damageScale(stateDeats[index].damageNormByGdp);
+
+                    console.log(damageScale(Math.log(stateDeats[index].damageNormByGdp)))
+                }
+
+            });
+
+        }
 
 
 
