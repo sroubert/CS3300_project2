@@ -365,9 +365,8 @@
         // Load data from json and csv files
         d3.queue()
             .defer(d3.json, "json/us.json")
-            .defer(d3.csv, "csv/ProcessedCSV/2015Condensed.csv", parseRowDetails)
-            .defer(d3.csv,"csv/RawCSV/2015DetailsRaw.csv", parseRowDetails)
-            //.defer(d3.csv, "csv/StormEvents_details_d2016_steamlined_first.csv", parseRowDetails)
+            .defer(d3.csv, "csv/ProcessedCSV/2016Condensed.csv", parseRowDetails)
+            .defer(d3.csv, "csv/StormEvents_details_d2016_steamlined_first.csv", parseRowDetails)
             .defer(d3.csv, "csv/StormEvents_locations-ftp_v1.0_d2016_c20170317.csv", parseRow)
             //.defer(d3.csv, "csv/2016MajorDamageOnly.csv", parseRowDetails)
             .defer(d3.csv, "csv/Fatalities/2015Fatalities.csv", parseRowDetails)
@@ -381,10 +380,10 @@
 
             stateDeats.forEach(function (state) {
                 var index;
-                //console.log(index);
+                
                 index = rawStatePop.findIndex(function (d) {
                     return d.NAME == state["State"];
-                    //console.log(d.NAME);
+                
                 })
 
 
@@ -493,8 +492,8 @@
             details = deats;
 
             stateDeats.forEach(function (d) {
-                console.log(d.FIPS);
-                console.log(d.State);
+                //console.log(d.FIPS);
+                //console.log(d.State);
             })
 
 
