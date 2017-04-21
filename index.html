@@ -246,8 +246,6 @@
             svg.selectAll("image")
                 //going through location, note has to be array
                 .data(d3.values(locations).filter(function (event) {
-                    //console.log(event.EVENT_ID);
-                    //console.log(deats[event.EVENT_ID]);
                     var beginDay = new Date(deats[event.EVENT_ID].BEGIN_DATE_TIME).clearTime();
 
                     var endDay = new Date(deats[event.EVENT_ID].END_DATE_TIME).clearTime();
@@ -294,8 +292,6 @@
                     svg.selectAll("image")
                         //going through location, note has to be array
                         .data(d3.values(locations).filter(function (event) {
-                            //console.log(event.EVENT_ID);
-                            //console.log(deats[event.EVENT_ID]);
                             var beginDay = new Date(deats[event.EVENT_ID].BEGIN_DATE_TIME).clearTime();
 
                             var endDay = new Date(deats[event.EVENT_ID].END_DATE_TIME).clearTime();
@@ -546,8 +542,7 @@
             details = deats;
 
             stateDeats.forEach(function (d) {
-                //console.log(d.FIPS);
-                //console.log(d.State);
+
             })
 
 
@@ -665,10 +660,6 @@
                             damage += Number(event.TotalDamage);
                         }
                     });
-
-                    console.log(state_name);
-                    console.log(fatal);
-                    console.log(damage);
 
 
                     var wvalues = [{
