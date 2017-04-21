@@ -282,6 +282,7 @@
             }
 
             var i = 0;
+
             function fastfor(index) {
                 if (index > allDates.length) return;
 
@@ -310,14 +311,13 @@
                         })
                         .attr("xlink:href", function (event) {
                             return details[event.EVENT_ID].icon;
-                        })                
+                        })
 
-                } catch(e) {
-                    
+                } catch (e) {
+
                 }
 
-                setTimeout(function ()
-                {
+                setTimeout(function () {
                     fastfor(index + 1);
                 }, 300);
             }
@@ -419,21 +419,39 @@
             .defer(d3.csv, "csv/StormEvents_details_d2016_steamlined_first.csv", parseRowDetails)
             .defer(d3.csv, "csv/StormEvents_locations-ftp_v1.0_d2016_c20170317.csv", parseRow)
             //.defer(d3.csv, "csv/2016MajorDamageOnly.csv", parseRowDetails)
-            .defer(d3.csv, "csv/Fatalities/2015Fatalities.csv", parseRowDetails)
+            .defer(d3.csv, "csv/Fatalities/2016Fatalities.csv", parseRowDetails)
             .defer(d3.csv, "csv/state2015GDP.csv", parseRowStateGDP)
             .defer(d3.csv, "csv/statePopulationData.csv", parseRowPop)
+            .defer(d3.csv, "csv/stateFIPSwithNames.csv")
 
-        .await(function (error, rawMap, conDetails, rawDetails, rawLocations, rawFatality, rawStateGDP, rawStatePop) {
+        .await(function (error, rawMap, conDetails, rawDetails, rawLocations, rawFatality, rawStateGDP, rawStatePop, rawStateFIPS) {
 
             stateDeats = rawStateGDP;
+
+            console.log(rawStateGDP);
+
+            stateDeats.forEach(function (state) {
+                var index;
+
+                index = rawStateFIPS.findIndex(function (d) {
+                    return d.STATE_NAME.toUpperCase() == state["State"].toUpperCase();
+                })
+
+                console.log(index);
+
+                if (index < 0) {
+                    console.log(state["State"]);
+                }
+                state["FIPS"] = rawStateFIPS[index].STATE_FIPS;
+            })
 
 
             stateDeats.forEach(function (state) {
                 var index;
-                
+
                 index = rawStatePop.findIndex(function (d) {
-                    return d.NAME == state["State"];
-                
+                    return d.NAME.toUpperCase() == state["State"].toUpperCase();
+
                 })
 
 
@@ -489,7 +507,6 @@
 
                     if (event.STATE == stateInfo.State) {
 
-                        stateInfo["FIPS"] = event.STATE_FIPS;
                         var ff = fates.filter(function (fate) {
                             return fate.EVENT_ID == event.EVENT_ID;
                         });
@@ -506,6 +523,8 @@
 
 
             });
+
+
 
 
             stateDeats.forEach(function (stateInfo) {
@@ -554,11 +573,31 @@
         document.body.appendChild(fatalButton);
 
 
-        fatalButton.onclick = function () {
+        var statePathsArray = [];
+        var statePaths = document.getElementsByTagName("path");
+        console.log(statePaths);
+
+        var fatalScale = d3.scaleQuantize()
+            .domain(fatalNormByPopDomain)
+            .range(colorsRange);
+
+        /*
+                fatalButton.onclick = function () {
 
 
+                    statePathsArray.forEach(function (path) {
 
-        }
+                        var index;
+
+                        index = stateDeats.findIndex(function (d) {
+                            return path.id = d.FIPS;
+                        })
+
+                        path.style.fill = fatalScale(Math.log(stateDeats[index].fatalNormByPop));
+
+                    });
+
+                }*/
 
         var damageButton = document.createElement("BUTTON"); // Create a <button> element
         var t = document.createTextNode("Map View With Damage Per State Normalized by State GDP"); // Create a text node
