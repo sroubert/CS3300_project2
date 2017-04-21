@@ -438,6 +438,7 @@
 
                     if (event.STATE == stateInfo.State) {
 
+                        stateInfo["FIPS"] = event.STATE_FIPS;
                         var ff = fates.filter(function (fate) {
                             return fate.EVENT_ID == event.EVENT_ID;
                         });
@@ -485,11 +486,40 @@
                 return Math.log(+d.fatalNormByPop)
             });
 
+            //createButtom();
             createMap();
             details = deats;
 
+            stateDeats.forEach(function (d) {
+                console.log(d.FIPS);
+                console.log(d.State);
+            })
+
 
         });
+
+        var fatalButton = document.createElement("BUTTON"); // Create a <button> element
+        var t = document.createTextNode("Map View With Fatalities Per State Normalized by State Population"); // Create a text node
+        fatalButton.appendChild(t); // Append the text to <button>
+        document.body.appendChild(fatalButton);
+
+
+        fatalButton.onclick = function () {
+
+
+
+        }
+
+        var damageButton = document.createElement("BUTTON"); // Create a <button> element
+        var t = document.createTextNode("Map View With Damage Per State Normalized by State GDP"); // Create a text node
+        damageButton.appendChild(t); // Append the text to <button>
+        document.body.appendChild(damageButton);
+
+
+
+
+
+
 
         d3.values(locations).forEach(function (event) {
             if (!episodeIDs.includes(event.EPISODE_ID)) {
@@ -522,6 +552,8 @@
             fatal = 0;
         var wmax = "";
 
+
+
         function createMap() {
             var svg = d3.select("#svg-map")
                 .attr("width", width)
@@ -535,6 +567,9 @@
                 .style("fill", "#77DD77")
                 .style("fill-opacity", 0.8)
                 .attr("d", path)
+                .attr("id", function (d) {
+                    return "" + d.id;
+                })
                 .on("click", function (d) { // Details when state is clicked
                     dsvg.selectAll(".change").remove();
                     dsvg.selectAll(".bar").remove();
