@@ -337,7 +337,7 @@
         }
 
         var parseRowStateGDP = function (row) {
-            row.GDP = Number(row.GDP);
+            row.GDP = Number(row.GDP) * 1000000;
             return row;
         }
 
@@ -350,7 +350,15 @@
         var rawDeats = {};
         var stateDeats;
         var statePop = [];
-        var gdpNum = [];
+        var stateGdpNum = [];
+        var stateDamArray = [];
+        var stateFatalArray = [];
+
+        var fatalNormByPop = [];
+        var damNormByGdp = [];
+
+        var fatalNormByPopDomain = [];
+        var damNormByGdpDomain = [];
 
         // Load data from json and csv files
         d3.queue()
@@ -381,7 +389,7 @@
                 state["Fatalities"] = 0;
 
                 statePop.push(state["Population"]);
-                gdpNum.push(state["GDP"]);
+                stateGdpNum.push(state["GDP"]);
 
             })
 
@@ -391,7 +399,7 @@
 
             statePop.sort(sortNumber);
 
-            gdpNum.sort(sortNumber);
+            stateGdpNum.sort(sortNumber);
 
             rawDeats = rawDetails;
             states = (topojson.feature(rawMap, rawMap.objects.states)).features;
@@ -446,9 +454,36 @@
             });
 
 
+            stateDeats.forEach(function (stateInfo) {
+                stateDamArray.push(stateInfo.Damage);
+                stateFatalArray.push(stateInfo.Fatalities);
+
+                stateInfo["damageNormByGdp"] = stateInfo.Damage / stateInfo.GDP;
+
+                stateInfo["fatalNormByPop"] = stateInfo.Fatalities / stateInfo.Population;
+
+                damNormByGdp.push(stateInfo["damageNormByGdp"]);
+                fatalNormByPop.push(stateInfo["fatalNormByPop"]);
+
+            })
+
+            damNormByGdp.sort(sortNumber);
+            fatalNormByPop.sort(sortNumber);
+
+            damNormByGdpDomain = d3.extent(damNormByGdp);
+            fatalNormByPopDomain = d3.extent(fatalNormByPop);
 
             createMap();
             details = deats;
+
+            for (i = 0; i < stateDamArray.length; i++) {
+                console.log("hi");
+                //damNormByGdp[i] = stateDamArray[i] / stateGdpNum[i];
+                //fatalNormByPop[i] = stateFatalArray[i] / statePop[i];
+            }
+
+
+
 
         });
 
