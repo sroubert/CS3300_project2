@@ -271,8 +271,62 @@
         }
 
         function visualizeFastForward() {
-            var currentStartDate = document.getElementById('startDate').value;
-            var currentEndDateVal = document.getElementById('endDate').value;
+            var rawStartDate = document.getElementById('startDate').value;
+            var rawEndDate = document.getElementById('endDate').value;
+
+            var userStartDate = new Date(rawStartDate.replace("-", "/"));
+            var userEndDate = new Date(rawEndDate.replace("-", "/"));
+
+            var allDates = [];
+            while (userStartDate <= userEndDate) {
+                allDates.push(new Date(userStartDate));
+                userStartDate.setDate(userStartDate.getDate() + 1);
+            }
+
+            var i = 0;
+            function fastfor(index) {
+                if (index > allDates.length) return;
+
+                try {
+                    var svg = d3.select("#svg-map");
+                    svg.selectAll("image").remove();
+
+                    svg.selectAll("image")
+                        //going through location, note has to be array
+                        .data(d3.values(locations).filter(function (event) {
+                            //console.log(event.EVENT_ID);
+                            //console.log(deats[event.EVENT_ID]);
+                            var beginDay = new Date(deats[event.EVENT_ID].BEGIN_DATE_TIME).clearTime();
+
+                            var endDay = new Date(deats[event.EVENT_ID].END_DATE_TIME).clearTime();
+
+                            //only filters if returns true
+                            return allDates[index].between(beginDay, endDay);
+
+                        })).enter()
+                        .append("image")
+                        .attr("x", function (event) {
+
+                            return projection([event.LATITUDE, event.LONGITUDE].reverse())[0] - 17;
+                        })
+                        .attr("y", function (event) {
+                            return projection([event.LATITUDE, event.LONGITUDE].reverse())[1] - 17;
+                        })
+                        .attr("xlink:href", function (event) {
+                            return details[event.EVENT_ID].icon;
+                        })                
+
+                } catch(e) {
+                    
+                }
+
+                setTimeout(function ()
+                {
+                    fastfor(index + 1);
+                }, 300);
+            }
+            fastfor(0);
+
         }
 
         var episodeCosts = [];
