@@ -360,6 +360,8 @@
         var fatalNormByPopDomain = [];
         var damNormByGdpDomain = [];
 
+        var colorsRange = ["#19FF35", "#BDE80E", "#FFCE1C", "#E8750E", "#FF2A19"];
+
         // Load data from json and csv files
         d3.queue()
             .defer(d3.json, "json/us.json")
@@ -460,7 +462,13 @@
 
                 stateInfo["damageNormByGdp"] = stateInfo.Damage / stateInfo.GDP;
 
-                stateInfo["fatalNormByPop"] = stateInfo.Fatalities / stateInfo.Population;
+
+
+                if ((stateInfo.Fatalities / stateInfo.Population) == 0) {
+                    stateInfo["fatalNormByPop"] = Number.MIN_VALUE;
+                } else {
+                    stateInfo["fatalNormByPop"] = stateInfo.Fatalities / stateInfo.Population;
+                }
 
                 damNormByGdp.push(stateInfo["damageNormByGdp"]);
                 fatalNormByPop.push(stateInfo["fatalNormByPop"]);
@@ -470,19 +478,15 @@
             damNormByGdp.sort(sortNumber);
             fatalNormByPop.sort(sortNumber);
 
-            damNormByGdpDomain = d3.extent(damNormByGdp);
-            fatalNormByPopDomain = d3.extent(fatalNormByPop);
+            damNormByGdpDomain = d3.extent(damNormByGdp, function (d) {
+                return Math.log(+d.damageNormByGdp);
+            });
+            fatalNormByPopDomain = d3.extent(fatalNormByPop, function (d) {
+                return Math.log(+d.fatalNormByPop)
+            });
 
             createMap();
             details = deats;
-
-            for (i = 0; i < stateDamArray.length; i++) {
-                console.log("hi");
-                //damNormByGdp[i] = stateDamArray[i] / stateGdpNum[i];
-                //fatalNormByPop[i] = stateFatalArray[i] / statePop[i];
-            }
-
-
 
 
         });
