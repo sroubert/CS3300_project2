@@ -424,7 +424,7 @@
 
             stateDeats = rawStateGDP;
 
-            console.log(rawStateGDP);
+            //console.log(rawStateGDP);
 
             stateDeats.forEach(function (state) {
                 var index;
@@ -433,10 +433,10 @@
                     return d.STATE_NAME.toUpperCase() == state["State"].toUpperCase();
                 })
 
-                console.log(index);
+                //console.log(index);
 
                 if (index < 0) {
-                    console.log(state["State"]);
+                    //console.log(state["State"]);
                 }
                 state["FIPS"] = rawStateFIPS[index].STATE_FIPS;
             })
@@ -571,7 +571,7 @@
 
         var statePathsArray = [];
         var statePaths = document.getElementsByTagName("path");
-        console.log(statePaths);
+        console.log(statePaths.length);
 
         var fatalScale = d3.scaleQuantize()
             .domain(fatalNormByPopDomain)
